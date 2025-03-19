@@ -116,13 +116,13 @@ TextureImporter:
       name: AlcheMergeSprite2_ORANGE_0
       rect:
         serializedVersion: 2
-        x: 279
-        y: 0
-        width: 745
-        height: 1024
+        x: 384
+        y: 545
+        width: 303
+        height: 274
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 114, z: 260, w: 216}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
