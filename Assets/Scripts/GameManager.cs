@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Threading;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,15 +22,16 @@ public class GameManager : MonoBehaviour
 
     public void ChangeGameState(GameState newState)
     {
-        currentState = newState;
-        SoundManager.instance.audioSource = FindAnyObjectByType<AudioSource>(); // Get the audio source component from the game object
+        currentState = newState; // Update the current game state
         switch (newState)
         {
             case GameState.MainMenu:
+                StartCoroutine(SoundManager.instance.FadeInMusic(10.0f, 0.1f)); // Fade in music over 10 seconds to 10% volume
                 SoundManager.instance.PlayMusic(SoundManager.instance.menuMusic);
                 break;
             case GameState.PlayPhase:
-                SoundManager.instance.PlayMusic(SoundManager.instance.playPhaseMusic);
+                // Fade out music over 5 seconds to 10% volume and then fade in new music at 20% volume
+                StartCoroutine(SoundManager.instance.FadeOutInMusicHelper(5.0f, 0.2f, SoundManager.instance.playPhaseMusic));
                 break;
             case GameState.CombatPhase:
                 SoundManager.instance.PlayMusic(SoundManager.instance.combatPhaseMusic);

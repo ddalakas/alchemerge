@@ -600,7 +600,7 @@ TextureImporter:
         width: 30
         height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -609,6 +609,72 @@ TextureImporter:
       bones: []
       spriteID: c5d2eecf44078eb4cb336167de65de42
       internalID: 1679984137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_big_pieces_21
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 323
+        width: 68
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b90eee2bb401bd4b90de874c34bf02c
+      internalID: -1900323079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_big_pieces_22
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 61
+        width: 50
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db41a92a21f4d344d869dffeaca2fe25
+      internalID: -346164144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_big_pieces_23
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 41
+        width: 50
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14ce67cb95d8d4e468ee75e0bc11a33d
+      internalID: 1093833425
       vertices: []
       indices: 
       edges: []
@@ -641,6 +707,9 @@ TextureImporter:
       ui_big_pieces_19: -1994016164
       ui_big_pieces_2: -1820778394629667666
       ui_big_pieces_20: 1679984137
+      ui_big_pieces_21: -1900323079
+      ui_big_pieces_22: -346164144
+      ui_big_pieces_23: 1093833425
       ui_big_pieces_3: 3957641884665371023
       ui_big_pieces_4: -9134983481026892119
       ui_big_pieces_5: 2324588936072700796
