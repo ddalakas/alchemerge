@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI topLeftHealthText;
     public Image topLeftSprite;
 
+    public Button settingsButton; // Reference to the settings button
 
     private void Awake()
     {
@@ -33,8 +34,8 @@ public class UIManager : MonoBehaviour
     {
         UpdateBottomRightHUD(PlayerManager.player1.health, PlayerManager.player1.attack, PlayerManager.player1.defence, bottomRightSprite.sprite);
         UpdateTopLeftHUD(PlayerManager.player2.health, PlayerManager.player2.attack, PlayerManager.player2.defence, topLeftSprite.sprite);
+        AddListeners(); // Add listeners
     }
-
     void Update()
     {
         // Check if mouse is clicked
@@ -74,6 +75,18 @@ public class UIManager : MonoBehaviour
             tempSprite = topLeftSprite.sprite;
             UpdateTopLeftHUD(PlayerManager.player1.health, PlayerManager.player1.attack, PlayerManager.player1.defence, bottomRightSprite.sprite);
             UpdateBottomRightHUD(PlayerManager.player2.health, PlayerManager.player2.attack, PlayerManager.player2.defence, tempSprite);
+        }
+    }
+
+    public void AddListeners()
+    {
+        GameObject soundManager = GameObject.Find("SoundManager");
+        Debug.Log(soundManager ? "SoundManager found" : "SoundManager not found");
+        if (soundManager != null)
+        {
+            settingsButton.onClick.AddListener(() => soundManager.GetComponent<SoundManager>().PlaySFX(
+                SoundManager.instance.buttonClickSFX
+            ));
         }
     }
 }

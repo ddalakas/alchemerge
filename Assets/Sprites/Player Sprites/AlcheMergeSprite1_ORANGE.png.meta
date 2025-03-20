@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: fca4b43fa10510c44b5f9c12a1055e2d
+guid: 84c5063024f93d04cab06a33f9016db9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4340057752678504158
-    second: Icon_Dark (10)_0
-  - first:
-      213: -7167647850426645910
-    second: Icon_Dark (10)_1
+      213: -5764867560185076912
+    second: AlcheMergeSprite1_ORANGE_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Icon_Dark (10)_0
+      name: AlcheMergeSprite1_ORANGE_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 75
-        height: 123
+        x: 260
+        y: 113
+        width: 486
+        height: 696
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ed6151d088bfa3c30800000000000000
-      internalID: 4340057752678504158
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Icon_Dark (10)_1
-      rect:
-        serializedVersion: 2
-        x: 97
-        y: 23
-        width: 51
-        height: 77
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a624a308146678c90800000000000000
-      internalID: -7167647850426645910
+      spriteID: 053eef16f731fffa0800000000000000
+      internalID: -5764867560185076912
       vertices: []
       indices: 
       edges: []
@@ -163,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -172,9 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Icon_Dark (10)_0: 4340057752678504158
-      Icon_Dark (10)_1: -7167647850426645910
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
