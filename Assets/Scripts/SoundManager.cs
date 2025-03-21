@@ -42,9 +42,9 @@ public class SoundManager : MonoBehaviour
     public IEnumerator FadeOutInMusic(float fadeDuration)
     {
         float initialVolume = audioSource.volume; // Store the initial volume
-        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / fadeDuration) // Loop until target volume is reached
+        for (float t = 0.0f; t < fadeDuration; t += Time.deltaTime)
         {
-            audioSource.volume = Mathf.Lerp(initialVolume, 0.0f, t); // Smoothly reduce volume to 0 
+            audioSource.volume = (1 - t / fadeDuration) * initialVolume; // Smoothly decrease volume to 0
             yield return null; // Wait until the next frame
         }
         audioSource.volume = 0.0f; // Ensure volume is set to 0 exactly
@@ -61,10 +61,10 @@ public class SoundManager : MonoBehaviour
     public IEnumerator FadeInMusic(float fadeDuration, float targetVolume)
     {
         Debug.Log("Starting FadeInMusic");
-        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / fadeDuration)
+        for (float t = 0.0f; t < fadeDuration; t += Time.deltaTime)
         {
-            audioSource.volume = Mathf.Lerp(0.0f, targetVolume, t);
-            yield return null;
+            audioSource.volume = t / fadeDuration * targetVolume; // Smoothly increase volume to target volume
+            yield return null; // Wait until the next frame
         }
         audioSource.volume = targetVolume;
         Debug.Log("Finished FadeInMusic");

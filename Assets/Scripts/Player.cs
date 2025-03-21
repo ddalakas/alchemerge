@@ -5,6 +5,9 @@ public class Player
     public int defence;
     public int health;
 
+    public enum element { Earth, Fire, Water, Wind };
+    public element baseElement;
+
     public Player(int attack, int defence, int health)
     {
         this.attack = attack;

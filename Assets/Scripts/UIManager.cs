@@ -20,7 +20,28 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI topLeftHealthText;
     public Image topLeftSprite;
 
-    public Button settingsButton; // Reference to the settings button
+    // Play Phase UI
+    public Button settingsButton;
+    public Button commitButton;
+    public Button codexButton;
+
+    public Image bottomBaseElementImage; // Image for the current player's base element
+    public Image topBaseElementImage; // Image for the opponent's base element
+
+    public Sprite fireElementSprite; // Sprite for the fire element
+    public Sprite waterElementSprite; // Sprite for the water element
+    public Sprite windElementSprite; // Sprite for the wind element
+    public Sprite earthElementSprite; // Sprite for the earth element
+
+    // Base Element Picker UI
+    public Button windButton;
+    public Button fireButton;
+    public Button waterButton;
+    public Button earthButton;
+
+    // Player Turn UI
+    public TextMeshProUGUI playerTurnText;
+    public Button playButton;
 
     private void Awake()
     {
@@ -34,15 +55,15 @@ public class UIManager : MonoBehaviour
     {
         UpdateBottomRightHUD(PlayerManager.player1.health, PlayerManager.player1.attack, PlayerManager.player1.defence, bottomRightSprite.sprite);
         UpdateTopLeftHUD(PlayerManager.player2.health, PlayerManager.player2.attack, PlayerManager.player2.defence, topLeftSprite.sprite);
-        AddListeners(); // Add listeners
+        AddPlayListeners(); // Add listeners to the buttons and execute the appropriate functions
+        UpdatePlayerTurnText(); // Update the player turn text
     }
-    void Update()
+    public void UpdatePlayerTurnText() // Updates the player turn text
     {
-        // Check if mouse is clicked
-        if (Input.GetMouseButtonDown(0)) // Left mouse button click
-        {
-            SwitchHUD();
-        }
+        if (TurnManager.isPlayer1Turn)
+            playerTurnText.text = "Player 1's Turn";
+        else
+            playerTurnText.text = "Player 2's Turn";
     }
 
     public void UpdateBottomRightHUD(int health, int attack, int defence, Sprite sprite) // Updates the bottom right HUD with the player's stats
@@ -61,7 +82,7 @@ public class UIManager : MonoBehaviour
         topLeftSprite.sprite = sprite;
     }
 
-    public void SwitchHUD()
+    public void SwitchPlayHUD()
     {
         Sprite tempSprite;
         if (TurnManager.isPlayer1Turn)
@@ -69,6 +90,11 @@ public class UIManager : MonoBehaviour
             tempSprite = bottomRightSprite.sprite;
             UpdateBottomRightHUD(PlayerManager.player1.health, PlayerManager.player1.attack, PlayerManager.player1.defence, topLeftSprite.sprite);
             UpdateTopLeftHUD(PlayerManager.player2.health, PlayerManager.player2.attack, PlayerManager.player2.defence, tempSprite);
+
+            // Swap base element images
+            tempSprite = bottomBaseElementImage.sprite;
+            bottomBaseElementImage.sprite = topBaseElementImage.sprite;
+            topBaseElementImage.sprite = tempSprite;
         }
         else
         {
@@ -78,15 +104,89 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void AddListeners()
+    private int baseElementSelections = 0; // Tracks selections
+
+    public void AddPlayListeners() // Adds listeners to the buttons and executes the appropriate functions
     {
+        Canvas playerTurnCanvas = GameObject.Find("Player Turn Canvas").GetComponent<Canvas>();
+        Canvas baseElementCanvas = GameObject.Find("Base Element Canvas").GetComponent<Canvas>();
+        Canvas playCanvas = GameObject.Find("PlayCanvas").GetComponent<Canvas>();
+
         GameObject soundManager = GameObject.Find("SoundManager");
-        Debug.Log(soundManager ? "SoundManager found" : "SoundManager not found");
         if (soundManager != null)
         {
-            settingsButton.onClick.AddListener(() => soundManager.GetComponent<SoundManager>().PlaySFX(
-                SoundManager.instance.buttonClickSFX
-            ));
+            SoundManager soundManagerObj = soundManager.GetComponent<SoundManager>();
+
+            // Assign button sounds
+            settingsButton.onClick.AddListener(() => soundManagerObj.PlaySFX(SoundManager.instance.buttonClickSFX));
+            commitButton.onClick.AddListener(() => soundManagerObj.PlaySFX(SoundManager.instance.buttonClickSFX));
+            codexButton.onClick.AddListener(() => soundManagerObj.PlaySFX(SoundManager.instance.buttonClickSFX));
+
+            // Base Element Selection
+            void SelectBaseElement(Player.element baseElement) // Function to select base element
+            {
+                baseElementSelections++; // Increment selections counter
+                soundManagerObj.PlaySFX(SoundManager.instance.buttonClickSFX); // Play button click sound
+
+                if (TurnManager.isPlayer1Turn)
+                {
+                    PlayerManager.player1.baseElement = baseElement; // Assign base element to player 1
+                }
+                else
+                {
+                    PlayerManager.player2.baseElement = baseElement; // Assign base element to player 2
+                }
+
+                TurnManager.SwitchTurn(); // Switch turn
+
+                baseElementCanvas.enabled = false; // Hide Base Element Picker
+
+                if (baseElementSelections == 2) // If both players have selected base elements
+                {
+                    playCanvas.enabled = true;
+                }
+                else
+                    playerTurnCanvas.enabled = true;   // Show Player Turn Canvas
+                UpdatePlayerTurnText();
+                AssignBaseElementSprite(baseElement, TurnManager.isPlayer1Turn ? bottomBaseElementImage : topBaseElementImage);
+            }
+
+            // Listener for each base element button
+            windButton.onClick.AddListener(() => SelectBaseElement(Player.element.Wind));
+            fireButton.onClick.AddListener(() => SelectBaseElement(Player.element.Fire));
+            waterButton.onClick.AddListener(() => SelectBaseElement(Player.element.Water));
+            earthButton.onClick.AddListener(() => SelectBaseElement(Player.element.Earth));
+
+
+
+            // Play Button: Only transition after both players select base elements
+            playButton.onClick.AddListener(() =>
+            {
+                soundManagerObj.PlaySFX(SoundManager.instance.buttonClickSFX); // Play button click sound
+                playerTurnCanvas.enabled = false;
+                if (baseElementSelections < 2) // If both players have not selected base elements
+                    baseElementCanvas.enabled = true;
+                else
+                    playCanvas.enabled = true;
+            });
+        }
+    }
+    public void AssignBaseElementSprite(Player.element baseElement, Image image) // Assigns the base element image to the player
+    {
+        switch (baseElement)
+        {
+            case Player.element.Fire:
+                image.sprite = fireElementSprite;
+                break;
+            case Player.element.Water:
+                image.sprite = waterElementSprite;
+                break;
+            case Player.element.Wind:
+                image.sprite = windElementSprite;
+                break;
+            case Player.element.Earth:
+                image.sprite = earthElementSprite;
+                break;
         }
     }
 }
