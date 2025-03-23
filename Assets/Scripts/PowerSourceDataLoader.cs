@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PowerSourceLoader : MonoBehaviour
 {
-    public TextAsset jsonFile; // Reference of JSON file
+    public TextAsset jsonFile; // Reference to the JSON file
 
     void Start()
     {
