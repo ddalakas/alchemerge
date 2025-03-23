@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 0180a5b98fee7814198979d37495c671
+guid: 9c7678e9e9fd0b54281a159fdd75c4a2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8132068987777061435
-    second: image-32_0
-  - first:
-      213: 8341351695502905245
-    second: image-32_1
+      213: 6351192564445126915
+    second: Sporestorm_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,7 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: image-32_0
+      name: Sporestorm_0
       rect:
         serializedVersion: 2
-        x: 14
+        x: 0
         y: 0
-        width: 99
-        height: 124
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b321c69a8a9ead070800000000000000
-      internalID: 8132068987777061435
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: image-32_1
-      rect:
-        serializedVersion: 2
-        x: 86
-        y: 113
-        width: 11
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d9f8d053c2f62c370800000000000000
-      internalID: 8341351695502905245
+      spriteID: 301aadfbcf7f32850800000000000000
+      internalID: 6351192564445126915
       vertices: []
       indices: 
       edges: []
@@ -163,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      image-32_0: 8132068987777061435
-      image-32_1: 8341351695502905245
+      Sporestorm_0: 6351192564445126915
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

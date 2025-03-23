@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3231f5f5f7cca0945849bbcb7d83c9dc
+guid: de3122597743b514fbe46929e0b61e98
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2896781438975400539
-    second: image-16_0
+      213: 6049605792901559095
+    second: Water_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -97,7 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: image-16_0
+      name: Water_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 1
-        width: 104
-        height: 125
+        x: 0
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5ad216fe5f633820800000000000000
-      internalID: 2896781438975400539
+      spriteID: 733fa0d9a6484f350800000000000000
+      internalID: 6049605792901559095
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 3e850aec8f3a45f4ebb3c9ff71ef0cc8
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      image-16_0: 2896781438975400539
+      Water_0: 6049605792901559095
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
