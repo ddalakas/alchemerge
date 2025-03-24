@@ -1,0 +1,34 @@
+InputA,InputB,Result
+Fire,Water,Cloud
+Fire,Earth,Lava
+Fire,Wind,Energy
+Water,Earth,Plant
+Water,Wind,Ice
+Wind,Earth,Sand
+Cloud,Wind,Tornado
+Cloud,Earth,Lightning
+Lava,Wind,Ash
+Lava,Water,Obsidian
+Energy,Water,Electricity
+Energy,Earth,Earthquake
+Plant,Fire,Emberwood
+Plant,Wind,Sporestorm
+Ice,Fire,Cryogen
+Ice,Earth,Glacier
+Sand,Fire,Glass
+Sand,Water,Quicksand
+Cloud,Lava,Inferno
+Cloud,Energy,Hurricane
+Cloud,Plant,Rainforest
+Cloud,Ice,Blizzard
+Cloud,Sand,Sandstorm
+Lava,Energy,Eruption
+Lava,Plant,Petrified Forest
+Lava,Ice,Frostbite's Grasp
+Lava,Sand,Asteroid
+Energy,Plant,Solar Flare
+Energy,Ice,Avalanche
+Energy,Sand,Sinkhole
+Plant,Ice,Frostbloom
+Plant,Sand,Oasis
+Ice,Sand,Arctic Exile
