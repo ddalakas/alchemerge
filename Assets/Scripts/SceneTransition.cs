@@ -20,7 +20,7 @@ public class SceneTransition : MonoBehaviour
         StartCoroutine(FadeOutLoadNewScreen(sceneName));
     }
 
-    IEnumerator FadeInScreen()
+    public IEnumerator FadeInScreen()
     {
         for (float t = fadeDuration; t > 0.0f; t -= Time.deltaTime)
         {
