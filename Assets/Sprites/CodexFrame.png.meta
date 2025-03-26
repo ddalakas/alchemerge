@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: a87cd57cf8b2b6444bf37fa66ec15ab4
+guid: 4199f4fd5f5db7748bcceeb9612765c8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1326105563921982713
-    second: Cryogen_0
+      213: 6656756110251961647
+    second: CodexFrame_0
+  - first:
+      213: -3558108105297367917
+    second: CodexFrame_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +49,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,23 +129,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cryogen_0
+      name: CodexFrame_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 128
-        height: 128
+        x: 78
+        y: 113
+        width: 98
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9f42d300cf5476210800000000000000
-      internalID: 1326105563921982713
+      spriteID: f2daafbc96c816c50800000000000000
+      internalID: 6656756110251961647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CodexFrame_1
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 28
+        width: 98
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39cef47a78f0f9ec0800000000000000
+      internalID: -3558108105297367917
       vertices: []
       indices: 
       edges: []
@@ -151,7 +176,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fcfc706d804af614ab66ae71232617d1
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +186,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cryogen_0: 1326105563921982713
+      CodexFrame_0: 6656756110251961647
+      CodexFrame_1: -3558108105297367917
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

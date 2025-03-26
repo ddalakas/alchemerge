@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fb4511f92fe294b408a31fe08516ad13
+guid: ba904652fed45774c96e5c65793c4974
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1007824605921987003
-    second: Air_0
+      213: 6395016512457571208
+    second: CodexFullFrame_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,27 +109,40 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Air_0
+      name: CodexFullFrame_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 128
-        height: 128
+        x: 181
+        y: 194
+        width: 700
+        height: 700
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f5abfed2d53a1ef45a5cc9a4410d4543
-      internalID: -1007824605921987003
+      spriteID: 88b7ac5c2a9afb850800000000000000
+      internalID: 6395016512457571208
       vertices: []
       indices: 
       edges: []
@@ -138,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6d301b6f84023df41ba10d059cd4e15a
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Air_0: -1007824605921987003
+      CodexFullFrame_0: 6395016512457571208
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

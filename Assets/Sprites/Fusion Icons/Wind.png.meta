@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a87cd57cf8b2b6444bf37fa66ec15ab4
+guid: fb4511f92fe294b408a31fe08516ad13
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1326105563921982713
-    second: Cryogen_0
+      213: 4578591244471777430
+    second: Wind_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,19 +97,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -126,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cryogen_0
+      name: Wind_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9f42d300cf5476210800000000000000
-      internalID: 1326105563921982713
+      spriteID: 698347a7a7c6a8f30800000000000000
+      internalID: 4578591244471777430
       vertices: []
       indices: 
       edges: []
@@ -151,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fcfc706d804af614ab66ae71232617d1
+    spriteID: 93004f805642ca342b40ee31e3dc1fc5
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cryogen_0: 1326105563921982713
+      Wind_0: 4578591244471777430
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
