@@ -132,7 +132,6 @@ public class PlayingFieldManager : MonoBehaviour
             PlayerManager.player2.attack = player2Attack;
             PlayerManager.player2.defence = player2Defence;
             PlayerManager.player2.health += player2Health;
-
         }
     }
 }

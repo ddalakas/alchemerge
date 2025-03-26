@@ -55,6 +55,6 @@ public class SatchelManager : MonoBehaviour
 
     public void SpawnDefaultPowerSource()
     {
-        SpawnPowerSource(PowerSourceManager.powerSourceList.PowerSources[0]); // Spawn the first PowerSource in the list
+        SpawnPowerSource(PowerSourceManager.powerSourceList.PowerSources[1]); // Spawn a default PowerSource
     }
 }
