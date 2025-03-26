@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PowerSourceLoader : MonoBehaviour
 {
-    public TextAsset jsonFile; // Reference to the JSON file
+    public TextAsset jsonFile; // Reference to the JSON file containg the PowerSource data.
 
     void Start()
     {
@@ -12,14 +12,15 @@ public class PowerSourceLoader : MonoBehaviour
 
             if (powerSourceData != null && powerSourceData.PowerSources != null)
             {
-                foreach (PowerSource ps in powerSourceData.PowerSources)
+                foreach (PowerSourceData ps in powerSourceData.PowerSources)
                 {
-                    Debug.Log($"Loaded: {ps.name}, Attack: {ps.attack}, Defence: {ps.defence}, Health: {ps.health}");
+                    Debug.Log($"Loaded: {ps.powerSourceName}, Attack: {ps.attack}, Defence: {ps.defence}, Health: {ps.health}");
                 }
+                PowerSourceManager.powerSourceList = powerSourceData; // Assign the PowerSource data to the PowerSourceManager.
             }
             else
             {
-                Debug.LogError("Failed to parse PowerSource data or PowerSources is empty.");
+                Debug.LogError("Failed to parse PowerSource data.");
             }
         }
         else

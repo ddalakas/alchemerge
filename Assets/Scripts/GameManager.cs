@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Threading;
 
 public class GameManager : MonoBehaviour
 {
@@ -30,8 +29,11 @@ public class GameManager : MonoBehaviour
                 SoundManager.instance.PlayMusic(SoundManager.instance.menuMusic);
                 break;
             case GameState.PlayPhase:
-                // Fade out music over 5 seconds to 10% volume and then fade in new music at 20% volume
-                StartCoroutine(SoundManager.instance.FadeOutInMusicHelper(5.0f, 0.2f, SoundManager.instance.playPhaseMusic));
+                if (!ToggleSound.isMusicMuted) // Only fade out and in music when not muted
+                {
+                    // Fade out music over 5 seconds and then fade in new music at 20% volume
+                    StartCoroutine(SoundManager.instance.FadeOutInMusicHelper(5.0f, 0.2f, SoundManager.instance.playPhaseMusic));
+                }
                 break;
             case GameState.CombatPhase:
                 SoundManager.instance.PlayMusic(SoundManager.instance.combatPhaseMusic);

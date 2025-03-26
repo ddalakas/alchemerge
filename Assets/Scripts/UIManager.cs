@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Numerics;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI bottomRightDefenceText;
     public TextMeshProUGUI bottomRightHealthText;
     public Image bottomRightSprite;
+    public TextMeshProUGUI bottomRightPlayerText;
 
 
     [Header("Top Left Player HUD")] // Current player sees the opponent's HUD in the top left corner
@@ -19,6 +21,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI topLeftDefenceText;
     public TextMeshProUGUI topLeftHealthText;
     public Image topLeftSprite;
+
+    public TextMeshProUGUI topLeftPlayerText;
 
     // Play Phase UI
     public Button settingsButton;
@@ -54,8 +58,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {   
 
-        UpdateBottomRightHUD(PlayerManager.player1.health, PlayerManager.player1.attack, PlayerManager.player1.defence, bottomRightSprite.sprite);
-        UpdateTopLeftHUD(PlayerManager.player2.health, PlayerManager.player2.attack, PlayerManager.player2.defence, topLeftSprite.sprite);
+        UpdateBottomRightHUD("Player 1", PlayerManager.player1.health, PlayerManager.player1.attack, PlayerManager.player1.defence, bottomRightSprite.sprite);
+        UpdateTopLeftHUD("Player 2", PlayerManager.player2.health, PlayerManager.player2.attack, PlayerManager.player2.defence, topLeftSprite.sprite);
         AddPlayListeners(); // Add listeners to the buttons and execute the appropriate functions
         UpdatePlayerTurnText(); // Update the player turn text
         UpdateCodexButtonState(); // Update the codex button state
@@ -77,16 +81,25 @@ public class UIManager : MonoBehaviour
             playerTurnText.text = "Player 2's Turn";
     }
 
-    public void UpdateBottomRightHUD(int health, int attack, int defence, Sprite sprite) // Updates the bottom right HUD with the player's stats
+    public void UpdateStats(int attack, int defence, int health) // Updates the player's stats on the screen
     {
+        bottomRightAttackText.text = $"{attack}";
+        bottomRightDefenceText.text = $"{defence}";
+        bottomRightHealthText.text = $"{health}";
+    }
+
+    public void UpdateBottomRightHUD(string playerText, int health, int attack, int defence, Sprite sprite) // Updates the bottom right HUD with the player's stats
+    {
+        bottomRightPlayerText.text = playerText;
         bottomRightAttackText.text = $"{attack}";
         bottomRightDefenceText.text = $"{defence}";
         bottomRightHealthText.text = $"{health}";
         bottomRightSprite.sprite = sprite;
     }
 
-    public void UpdateTopLeftHUD(int health, int attack, int defence, Sprite sprite) // Updates the top left HUD with the opponent's stats
+    public void UpdateTopLeftHUD(string playerText, int health, int attack, int defence, Sprite sprite) // Updates the top left HUD with the opponent's stats
     {
+        topLeftPlayerText.text = playerText;
         topLeftAttackText.text = $"{attack}";
         topLeftDefenceText.text = $"{defence}";
         topLeftHealthText.text = $"{health}";
@@ -99,20 +112,28 @@ public class UIManager : MonoBehaviour
         if (TurnManager.isPlayer1Turn)
         {
             tempSprite = bottomRightSprite.sprite;
-            UpdateBottomRightHUD(PlayerManager.player1.health, PlayerManager.player1.attack, PlayerManager.player1.defence, topLeftSprite.sprite);
-            UpdateTopLeftHUD(PlayerManager.player2.health, PlayerManager.player2.attack, PlayerManager.player2.defence, tempSprite);
-
-            // Swap base element images
-            tempSprite = bottomBaseElementImage.sprite;
-            bottomBaseElementImage.sprite = topBaseElementImage.sprite;
-            topBaseElementImage.sprite = tempSprite;
+            UpdateBottomRightHUD("Player 1", PlayerManager.player1.health, PlayerManager.player1.attack, PlayerManager.player1.defence, topLeftSprite.sprite);
+            UpdateTopLeftHUD("Player 2", PlayerManager.player2.health, PlayerManager.player2.attack, PlayerManager.player2.defence, tempSprite);
         }
         else
         {
             tempSprite = topLeftSprite.sprite;
-            UpdateTopLeftHUD(PlayerManager.player1.health, PlayerManager.player1.attack, PlayerManager.player1.defence, bottomRightSprite.sprite);
-            UpdateBottomRightHUD(PlayerManager.player2.health, PlayerManager.player2.attack, PlayerManager.player2.defence, tempSprite);
+            UpdateTopLeftHUD("Player 1", PlayerManager.player1.health, PlayerManager.player1.attack, PlayerManager.player1.defence, bottomRightSprite.sprite);
+            UpdateBottomRightHUD("Player 2", PlayerManager.player2.health, PlayerManager.player2.attack, PlayerManager.player2.defence, tempSprite);
         }
+
+        // Swap base element images
+        tempSprite = bottomBaseElementImage.sprite;
+        bottomBaseElementImage.sprite = topBaseElementImage.sprite;
+        topBaseElementImage.sprite = tempSprite;
+
+        UnityEngine.Vector3 temp = bottomRightSprite.rectTransform.localScale;
+        temp.x = temp.x * -1; // Flip the sprite horizontally
+        bottomRightSprite.rectTransform.localScale = temp;
+
+        temp = topLeftSprite.rectTransform.localScale;
+        temp.x = temp.x * -1; // Flip the sprite horizontally
+        topLeftSprite.rectTransform.localScale = temp;
     }
 
     private int baseElementSelections = 0; // Tracks selections
@@ -128,9 +149,28 @@ public class UIManager : MonoBehaviour
         {
             SoundManager soundManagerObj = soundManager.GetComponent<SoundManager>();
 
-            // Assign button sounds
-            settingsButton.onClick.AddListener(() => soundManagerObj.PlaySFX(SoundManager.instance.buttonClickSFX));
-            commitButton.onClick.AddListener(() => soundManagerObj.PlaySFX(SoundManager.instance.buttonClickSFX));
+            // Settings Button
+            settingsButton.onClick.AddListener(() => soundManagerObj.PlaySFX(SoundManager.instance.buttonClickSFX)); // Play button click SFX
+
+            // Commit Button
+            commitButton.onClick.AddListener(() =>
+            {
+                soundManagerObj.PlaySFX(SoundManager.instance.buttonClickSFX);
+                TurnManager.SwitchTurn(); // Switch turn
+                Debug.Log("It is now " + (TurnManager.isPlayer1Turn ? "Player 1's" : "Player 2's") + " turn.");
+
+                UpdatePlayerTurnText(); // Update the player turn text
+                SwitchPlayHUD(); // Switch the HUD between Player1 and Player2
+                PowerSource temp = FindAnyObjectByType<PowerSource>(); // Find a PowerSource object
+                temp.nameText.text = ""; // Clear the PowerSource name text
+
+                PlayingFieldManager.Instance.FlipPlayingField(); // Flip the playing field
+                playCanvas.enabled = false; // Hide Play Canvas
+                playerTurnCanvas.enabled = true;   // Show Player Turn Canvas  
+            }
+            );
+
+            // Codex Button
             codexButton.onClick.AddListener(() => soundManagerObj.PlaySFX(SoundManager.instance.buttonClickSFX));
 
             // Base Element Selection
@@ -141,25 +181,20 @@ public class UIManager : MonoBehaviour
 
                 if (TurnManager.isPlayer1Turn)
                 {
+                    Debug.Log("Player 1 selected " + baseElement);
                     PlayerManager.player1.baseElement = baseElement; // Assign base element to player 1
                 }
                 else
                 {
+                    Debug.Log("Player 2 selected " + baseElement);
                     PlayerManager.player2.baseElement = baseElement; // Assign base element to player 2
                 }
-
+                AssignBaseElementSprite(baseElement, TurnManager.isPlayer1Turn ? bottomBaseElementImage : topBaseElementImage);
                 TurnManager.SwitchTurn(); // Switch turn
+                UpdatePlayerTurnText(); // Update the player turn text
 
                 baseElementCanvas.enabled = false; // Hide Base Element Picker
-
-                if (baseElementSelections == 2) // If both players have selected base elements
-                {
-                    playCanvas.enabled = true;
-                }
-                else
-                    playerTurnCanvas.enabled = true;   // Show Player Turn Canvas
-                UpdatePlayerTurnText();
-                AssignBaseElementSprite(baseElement, TurnManager.isPlayer1Turn ? bottomBaseElementImage : topBaseElementImage);
+                playerTurnCanvas.enabled = true;   // Show Player Turn Canvas
             }
 
             // Listener for each base element button
@@ -168,9 +203,7 @@ public class UIManager : MonoBehaviour
             waterButton.onClick.AddListener(() => SelectBaseElement(Player.element.Water));
             earthButton.onClick.AddListener(() => SelectBaseElement(Player.element.Earth));
 
-
-
-            // Play Button: Only transition after both players select base elements
+            // Play Button
             playButton.onClick.AddListener(() =>
             {
                 soundManagerObj.PlaySFX(SoundManager.instance.buttonClickSFX); // Play button click sound
@@ -178,7 +211,12 @@ public class UIManager : MonoBehaviour
                 if (baseElementSelections < 2) // If both players have not selected base elements
                     baseElementCanvas.enabled = true;
                 else
-                    playCanvas.enabled = true;
+                {
+                    playCanvas.enabled = true; // Show Play Canvas
+                    SceneTransition sceneTransition = FindAnyObjectByType<SceneTransition>(); // Find the SceneTransition component
+                    StartCoroutine(sceneTransition.FadeInScreen()); // Fade in the screen
+                    UpdatePlayerTurnText(); // Update the player turn text
+                }
             });
         }
     }
