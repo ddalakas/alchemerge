@@ -52,11 +52,22 @@ public class UIManager : MonoBehaviour
     }
 
     void Start()
-    {
+    {   
+
         UpdateBottomRightHUD(PlayerManager.player1.health, PlayerManager.player1.attack, PlayerManager.player1.defence, bottomRightSprite.sprite);
         UpdateTopLeftHUD(PlayerManager.player2.health, PlayerManager.player2.attack, PlayerManager.player2.defence, topLeftSprite.sprite);
         AddPlayListeners(); // Add listeners to the buttons and execute the appropriate functions
         UpdatePlayerTurnText(); // Update the player turn text
+        UpdateCodexButtonState(); // Update the codex button state
+    }
+
+    void UpdateCodexButtonState()
+    {
+        if (CodexManager.Instance != null)
+        {
+            bool isCodexEnabled = SettingsManager.Instance.IsCodexEnabled(); // Check if codex is enabled
+            codexButton.gameObject.SetActive(isCodexEnabled); // Show/Hide codex button
+        }
     }
     public void UpdatePlayerTurnText() // Updates the player turn text
     {
