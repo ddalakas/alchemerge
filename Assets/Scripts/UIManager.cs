@@ -65,7 +65,7 @@ public class UIManager : MonoBehaviour
         UpdateCodexButtonState(); // Update the codex button state
     }
 
-    void UpdateCodexButtonState()
+    public void UpdateCodexButtonState()
     {
         if (CodexManager.Instance != null)
         {
@@ -144,18 +144,36 @@ public class UIManager : MonoBehaviour
         Canvas baseElementCanvas = GameObject.Find("Base Element Canvas").GetComponent<Canvas>();
         Canvas playCanvas = GameObject.Find("PlayCanvas").GetComponent<Canvas>();
 
-        GameObject soundManager = GameObject.Find("SoundManager");
-        if (soundManager != null)
+        GameObject settingsManagerObj= GameObject.Find("SettingsManager");
+        GameObject codexManagerObj = GameObject.Find("CodexManager");
+        GameObject soundManagerObj = GameObject.Find("SoundManager");
+
+        if (soundManagerObj != null && settingsManagerObj != null)
         {
-            SoundManager soundManagerObj = soundManager.GetComponent<SoundManager>();
+            
+            SettingsManager settingsManager = settingsManagerObj.GetComponent<SettingsManager>();
+            CodexManager codexManager = codexManagerObj.GetComponent<CodexManager>();
+            SoundManager soundManager = soundManagerObj.GetComponent<SoundManager>();
 
             // Settings Button
-            settingsButton.onClick.AddListener(() => soundManagerObj.PlaySFX(SoundManager.instance.buttonClickSFX)); // Play button click SFX
+            settingsButton.onClick.AddListener(() => 
+            {
+            soundManager.PlaySFX(SoundManager.instance.buttonClickSFX); // Play button click SFX
+            settingsManager.ToggleSettings(); // Show settings canvas
+            }
+            );
+
+            codexButton.onClick.AddListener(() =>
+            {
+            soundManager.PlaySFX(SoundManager.instance.buttonClickSFX); // Play button click SFX
+            codexManager.ToggleCodex(); // Show codex canvas
+            }
+            );
 
             // Commit Button
             commitButton.onClick.AddListener(() =>
             {
-                soundManagerObj.PlaySFX(SoundManager.instance.buttonClickSFX);
+                soundManager.PlaySFX(SoundManager.instance.buttonClickSFX);
                 TurnManager.SwitchTurn(); // Switch turn
                 Debug.Log("It is now " + (TurnManager.isPlayer1Turn ? "Player 1's" : "Player 2's") + " turn.");
 
@@ -171,13 +189,13 @@ public class UIManager : MonoBehaviour
             );
 
             // Codex Button
-            codexButton.onClick.AddListener(() => soundManagerObj.PlaySFX(SoundManager.instance.buttonClickSFX));
+            codexButton.onClick.AddListener(() => soundManager.PlaySFX(SoundManager.instance.buttonClickSFX));
 
             // Base Element Selection
             void SelectBaseElement(Player.element baseElement) // Function to select base element
             {
                 baseElementSelections++; // Increment selections counter
-                soundManagerObj.PlaySFX(SoundManager.instance.buttonClickSFX); // Play button click sound
+                soundManager.PlaySFX(SoundManager.instance.buttonClickSFX); // Play button click sound
 
                 if (TurnManager.isPlayer1Turn)
                 {
@@ -206,7 +224,7 @@ public class UIManager : MonoBehaviour
             // Play Button
             playButton.onClick.AddListener(() =>
             {
-                soundManagerObj.PlaySFX(SoundManager.instance.buttonClickSFX); // Play button click sound
+                soundManager.PlaySFX(SoundManager.instance.buttonClickSFX); // Play button click sound
                 playerTurnCanvas.enabled = false;
                 if (baseElementSelections < 2) // If both players have not selected base elements
                     baseElementCanvas.enabled = true;
