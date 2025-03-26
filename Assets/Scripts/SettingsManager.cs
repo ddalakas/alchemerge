@@ -52,6 +52,10 @@ public class SettingsManager : MonoBehaviour
     {
         isCodexEnabled = !isCodexEnabled; // Toggle boolean
         codexStatusText.text = isCodexEnabled ? "ON" : "OFF"; // Set text to "On" if enabled, "Off" if disabled
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.UpdateCodexButtonState(); // Update the button state in the UIManager
+        }
     }
 
     // UIManager will call this to check if the Codex is enabled

@@ -65,7 +65,7 @@ public class UIManager : MonoBehaviour
         UpdateCodexButtonState(); // Update the codex button state
     }
 
-    void UpdateCodexButtonState()
+    public void UpdateCodexButtonState()
     {
         if (CodexManager.Instance != null)
         {
@@ -154,7 +154,7 @@ public class UIManager : MonoBehaviour
             SettingsManager settingsManager = settingsManagerObj.GetComponent<SettingsManager>();
             CodexManager codexManager = codexManagerObj.GetComponent<CodexManager>();
             SoundManager soundManager = soundManagerObj.GetComponent<SoundManager>();
-            
+
             // Settings Button
             settingsButton.onClick.AddListener(() => 
             {
