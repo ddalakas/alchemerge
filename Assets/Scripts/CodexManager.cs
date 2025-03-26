@@ -21,6 +21,8 @@ public class CodexManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(codexCanvas); // Keep Codex canvas across scenes
+            DontDestroyOnLoad(gameObject); // Keep CodexManager across scenes
+            
         }
         else
         {

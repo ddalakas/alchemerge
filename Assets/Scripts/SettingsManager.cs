@@ -5,7 +5,7 @@ using TMPro;
 public class SettingsManager : MonoBehaviour
 {   
 
-    public static SettingsManager Instance;
+    public static SettingsManager Instance; // Singleton pattern
 
     [Header("UI References")]
     public Button codexEnableButton;
@@ -15,18 +15,23 @@ public class SettingsManager : MonoBehaviour
 
     private bool isCodexEnabled = true; // Default to enabled
 
-    void Start()
-    {   
 
-        if (Instance == null)
+    void Awake()    
+    {
+        if (Instance == null) // Singleton pattern
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject); // Persist through scene changes
+            DontDestroyOnLoad(settingsCanvas); // Persist through scene changes
         }
         else
         {
             Destroy(gameObject);
         }
+    }
 
+    void Start()
+    {   
         // Add a on-click listener to the button
         if (codexEnableButton != null)
         {
@@ -59,7 +64,7 @@ public class SettingsManager : MonoBehaviour
     public void ToggleSettings()
     {
         // Toggle the settings menu
-        gameObject.SetActive(!gameObject.activeSelf);
+        settingsCanvas.SetActive(!settingsCanvas.activeSelf);
     }
 
 }
