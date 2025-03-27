@@ -126,33 +126,3 @@ public class SatchelManager : MonoBehaviour
         }
     }
 }
-
-// Update the Satchel view based on the current turn
-/*
-public void UpdateSatchelView()
-{
-    foreach (SatchelSlot satchelSlot in satchelSlots)
-    {
-        if (satchelSlot.slotTransform.childCount > 0) // Check if the slot has a PowerSource in it
-        {
-            PowerSource ps = satchelSlot.slotTransform.GetComponentInChildren<PowerSource>();
-            if (ps != null)
-            {
-                // Conditionally show Power Sources in the Satchel based on current turn and PowerSource owner
-                if (TurnManager.isPlayer1Turn && ps.isOwnedByPlayer1 == true)
-                {
-                    ps.gameObject.SetActive(true);
-                }
-                else if (!TurnManager.isPlayer1Turn && ps.isOwnedByPlayer1 == false)
-                {
-                    ps.gameObject.SetActive(true);
-                }
-                else
-                {
-                    ps.gameObject.SetActive(false);
-                }
-            }
-        }
-    }
-}
-}*/
