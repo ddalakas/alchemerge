@@ -46,6 +46,13 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI playerTurnText;
     public Button playButton;
 
+    // Power Source Selection UI
+    public Button powerSource1Button;
+    public Image powerSource1ButtonImage;
+    public Button powerSource2Button;
+    public Image powerSource2ButtonImage;
+    public string[] powerSourceChoices; // Used to store the current PowerSource options
+
     private void Awake()
     {
         if (Instance == null)
@@ -125,7 +132,7 @@ public class UIManager : MonoBehaviour
         bottomBaseElementImage.sprite = topBaseElementImage.sprite;
         topBaseElementImage.sprite = tempSprite;
 
-        UnityEngine.Vector3 temp = bottomRightSprite.rectTransform.localScale;
+        Vector3 temp = bottomRightSprite.rectTransform.localScale;
         temp.x = temp.x * -1; // Flip the sprite horizontally
         bottomRightSprite.rectTransform.localScale = temp;
 
@@ -141,6 +148,8 @@ public class UIManager : MonoBehaviour
         Canvas playerTurnCanvas = GameObject.Find("Player Turn Canvas").GetComponent<Canvas>();
         Canvas baseElementCanvas = GameObject.Find("Base Element Canvas").GetComponent<Canvas>();
         Canvas playCanvas = GameObject.Find("PlayCanvas").GetComponent<Canvas>();
+        Canvas powerSourceSelectionCanvas = GameObject.Find("Power Source Selection Canvas").GetComponent<Canvas>();
+        if (powerSourceSelectionCanvas != null) Debug.Log("Power Source Selection Canvas found");
 
         GameObject settingsManagerObj = GameObject.Find("SettingsManager");
         GameObject codexManagerObj = GameObject.Find("CodexManager");
@@ -160,7 +169,7 @@ public class UIManager : MonoBehaviour
                 settingsManager.ToggleSettings(); // Show settings canvas
             }
             );
-
+            // Codex Button
             codexButton.onClick.AddListener(() =>
             {
                 soundManager.PlaySFX(SoundManager.instance.buttonClickSFX); // Play button click SFX
@@ -177,17 +186,16 @@ public class UIManager : MonoBehaviour
 
                 UpdatePlayerTurnText(); // Update the player turn text
                 SwitchPlayHUD(); // Switch the HUD between Player1 and Player2
+
                 PowerSource temp = FindAnyObjectByType<PowerSource>(); // Find a PowerSource object
                 temp.nameText.text = ""; // Clear the PowerSource name text
 
                 PlayingFieldManager.Instance.FlipPlayingField(); // Flip the playing field
+
                 playCanvas.enabled = false; // Hide Play Canvas
-                playerTurnCanvas.enabled = true;   // Show Player Turn Canvas  
+                playerTurnCanvas.enabled = true;   // Show Player Turn Canvas
             }
             );
-
-            // Codex Button
-            codexButton.onClick.AddListener(() => soundManager.PlaySFX(SoundManager.instance.buttonClickSFX));
 
             // Base Element Selection
             void SelectBaseElement(Player.element baseElement) // Function to select base element
@@ -236,11 +244,38 @@ public class UIManager : MonoBehaviour
                     baseElementCanvas.enabled = true;
                 else
                 {
-                    playCanvas.enabled = true; // Show Play Canvas
+                    GetPowerSourceOptions(); // Get PowerSource options for the current player
+                    powerSourceSelectionCanvas.enabled = true; // Show Power Source Selection Canvas
                     SceneTransition sceneTransition = FindAnyObjectByType<SceneTransition>(); // Find the SceneTransition component
                     StartCoroutine(sceneTransition.FadeInScreen()); // Fade in the screen
                     UpdatePlayerTurnText(); // Update the player turn text
                 }
+            });
+
+            // Power Source Selection
+            powerSource1Button.onClick.AddListener(() =>
+            {
+                soundManager.PlaySFX(SoundManager.instance.buttonClickSFX); // Play button click sound
+
+                SatchelManager.Instance.SwitchPlayerSatchel(); // Switch the player satchel
+
+                // Spawn PowerSource 1
+                SatchelManager.Instance.SpawnPowerSource(PowerSourceManager.GetPowerSourceData(powerSourceChoices[0]));
+                powerSourceSelectionCanvas.enabled = false; // Hide Power Source Selection Canvas
+
+                playCanvas.enabled = true; // Show Play Canvas
+            });
+            powerSource2Button.onClick.AddListener(() =>
+            {
+                soundManager.PlaySFX(SoundManager.instance.buttonClickSFX); // Play button click sound
+
+                SatchelManager.Instance.SwitchPlayerSatchel(); // Switch the player satchel
+
+                // Spawn PowerSource 2
+                SatchelManager.Instance.SpawnPowerSource(PowerSourceManager.GetPowerSourceData(powerSourceChoices[1]));
+                powerSourceSelectionCanvas.enabled = false; // Hide Power Source Selection Canvas
+
+                playCanvas.enabled = true; // Show Play Canvas
             });
         }
     }
@@ -262,4 +297,19 @@ public class UIManager : MonoBehaviour
                 break;
         }
     }
+
+    public void GetPowerSourceOptions() // Get PowerSource options for the current player
+    {
+        if (TurnManager.isPlayer1Turn)
+        {
+            powerSourceChoices = PowerSourceGenerator.GeneratePowerSources(PlayerManager.player1); // Generate PowerSources for Player 1
+        }
+        else
+        {
+            powerSourceChoices = PowerSourceGenerator.GeneratePowerSources(PlayerManager.player2); // Generate PowerSources for Player 2
+        }
+        powerSource1ButtonImage.sprite = PowerSourceManager.GetPowerSourceSprite(powerSourceChoices[0]); // Set PowerSource 1 sprite
+        powerSource2ButtonImage.sprite = PowerSourceManager.GetPowerSourceSprite(powerSourceChoices[1]); // Set PowerSource 2 sprite
+    }
+
 }

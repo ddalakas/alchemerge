@@ -152,8 +152,26 @@ public class PowerSource : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
             if (satchelSlot != null) // If PowerSource was in a satchel slot
             {
-                satchelSlot.isOccupied = false; // Free up the satchel slot
-                satchelSlot = null; // Clear the satchel slot reference
+                int satchelSlotIndex = System.Array.IndexOf(SatchelManager.Instance.satchelSlots, satchelSlot);
+                if (TurnManager.isPlayer1Turn)
+                {
+                    // Check if Player 2 has a PowerSource in the same slot
+                    if (SatchelManager.Instance.player2SatchelPowerSources[satchelSlotIndex] == null) //
+                    {
+                        SatchelManager.Instance.satchelSlots[satchelSlotIndex].isOccupied = false; // Ensure the slot is marked as unoccupied
+                    }
+                    SatchelManager.Instance.player1SatchelPowerSources[satchelSlotIndex] = null; // Remove from satchel
+                }
+                else
+                {
+                    // Check if Player 1 has a PowerSource in the same slot
+                    if (SatchelManager.Instance.player1SatchelPowerSources[satchelSlotIndex] == null) //
+                    {
+                        SatchelManager.Instance.satchelSlots[satchelSlotIndex].isOccupied = false; // Ensure the slot is marked as unoccupied
+                    }
+                    SatchelManager.Instance.player2SatchelPowerSources[satchelSlotIndex] = null; // Remove from satchel
+                }
+                satchelSlot = null; // Clear the Power Source's satchel slot reference
             }
 
             Debug.Log("PowerSource was placed in the playing field at slot + " + slotIndex);
