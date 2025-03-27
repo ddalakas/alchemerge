@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1e78c870146ea8f4fb4a5adf3918dd2f
+guid: ae95a6d57f5f60748a1b688d0f5fb8ed
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3755798978917141744
-    second: AlcheMergeSprite1_WHITE_0
+      213: 3703417013818073536
+    second: Player1_Fire_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 1024
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,40 +109,49 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AlcheMergeSprite1_WHITE_0
+      name: Player1_Fire_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1024
-        height: 1024
+        x: 260
+        y: 113
+        width: 486
+        height: 696
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0137edd4ab8b0ebc0800000000000000
-      internalID: -3755798978917141744
+      spriteID: 0c1a3cb072e256330800000000000000
+      internalID: 3703417013818073536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player1_Fire_1
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 570
+        width: 290
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35dc9eaed42d7a349a74aed3a13a9e85
+      internalID: 51579333
       vertices: []
       indices: 
       edges: []
@@ -151,7 +160,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8062465254c6fbe48b09b1d2b2cf9b7e
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +170,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      AlcheMergeSprite1_WHITE_0: -3755798978917141744
+      Player1_Fire_0: 3703417013818073536
+      Player1_Fire_1: 51579333
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

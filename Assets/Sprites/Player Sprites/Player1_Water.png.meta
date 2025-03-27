@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f47a77a82ccbc624e998a0dc886a4370
+guid: af86eddfe3dcb464980c1147c3be6c43
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4700075526140245643
-    second: AlcheMergeSprite2_GREEN_ALTjewelstyle_0
+      213: 231217201099893234
+    second: Player1_Water_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 1024
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,23 +113,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AlcheMergeSprite2_GREEN_ALTjewelstyle_0
+      name: Player1_Water_0
       rect:
         serializedVersion: 2
-        x: 278
+        x: 260
         y: 113
         width: 486
         height: 696
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 57947e6063af5ceb0800000000000000
-      internalID: -4700075526140245643
+      spriteID: 2f9e481c1d2753300800000000000000
+      internalID: 231217201099893234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player1_Water_1
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 570
+        width: 290
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ed0a6b0014ad6d4dad29b4ad85a3a00
+      internalID: -654455736
       vertices: []
       indices: 
       edges: []
@@ -138,7 +160,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: b64af552170994647bc617f09293afc3
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +170,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      AlcheMergeSprite2_GREEN_ALTjewelstyle_0: -4700075526140245643
+      Player1_Water_0: 231217201099893234
+      Player1_Water_1: -654455736
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
