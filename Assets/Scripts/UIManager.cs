@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System.Numerics;
 
 public class UIManager : MonoBehaviour
 {
@@ -56,8 +55,7 @@ public class UIManager : MonoBehaviour
     }
 
     void Start()
-    {   
-
+    {
         UpdateBottomRightHUD("Player 1", PlayerManager.player1.health, PlayerManager.player1.attack, PlayerManager.player1.defence, bottomRightSprite.sprite);
         UpdateTopLeftHUD("Player 2", PlayerManager.player2.health, PlayerManager.player2.attack, PlayerManager.player2.defence, topLeftSprite.sprite);
         AddPlayListeners(); // Add listeners to the buttons and execute the appropriate functions
@@ -144,29 +142,29 @@ public class UIManager : MonoBehaviour
         Canvas baseElementCanvas = GameObject.Find("Base Element Canvas").GetComponent<Canvas>();
         Canvas playCanvas = GameObject.Find("PlayCanvas").GetComponent<Canvas>();
 
-        GameObject settingsManagerObj= GameObject.Find("SettingsManager");
+        GameObject settingsManagerObj = GameObject.Find("SettingsManager");
         GameObject codexManagerObj = GameObject.Find("CodexManager");
         GameObject soundManagerObj = GameObject.Find("SoundManager");
 
         if (soundManagerObj != null && settingsManagerObj != null)
         {
-            
+
             SettingsManager settingsManager = settingsManagerObj.GetComponent<SettingsManager>();
             CodexManager codexManager = codexManagerObj.GetComponent<CodexManager>();
             SoundManager soundManager = soundManagerObj.GetComponent<SoundManager>();
 
             // Settings Button
-            settingsButton.onClick.AddListener(() => 
+            settingsButton.onClick.AddListener(() =>
             {
-            soundManager.PlaySFX(SoundManager.instance.buttonClickSFX); // Play button click SFX
-            settingsManager.ToggleSettings(); // Show settings canvas
+                soundManager.PlaySFX(SoundManager.instance.buttonClickSFX); // Play button click SFX
+                settingsManager.ToggleSettings(); // Show settings canvas
             }
             );
 
             codexButton.onClick.AddListener(() =>
             {
-            soundManager.PlaySFX(SoundManager.instance.buttonClickSFX); // Play button click SFX
-            codexManager.ToggleCodex(); // Show codex canvas
+                soundManager.PlaySFX(SoundManager.instance.buttonClickSFX); // Play button click SFX
+                codexManager.ToggleCodex(); // Show codex canvas
             }
             );
 
@@ -200,12 +198,20 @@ public class UIManager : MonoBehaviour
                 if (TurnManager.isPlayer1Turn)
                 {
                     Debug.Log("Player 1 selected " + baseElement);
-                    PlayerManager.player1.baseElement = baseElement; // Assign base element to player 1
+                    PlayerManager.player1.baseElement = baseElement; // Assign base element to Player 1
+
+                    // Assign Player 1 sprite based on their chosen base element
+                    PlayerManager.player1.spriteName = "Player1_" + baseElement.ToString();
+                    bottomRightSprite.sprite = PlayerSpriteManager.GetPlayerSprite(PlayerManager.player1.spriteName + "_1"); // set portrait sprite
                 }
                 else
                 {
                     Debug.Log("Player 2 selected " + baseElement);
-                    PlayerManager.player2.baseElement = baseElement; // Assign base element to player 2
+                    PlayerManager.player2.baseElement = baseElement; // Assign base element to Player 2
+
+                    // Assign Player 2 sprite based on their chosen base element
+                    PlayerManager.player2.spriteName = "Player2_" + baseElement.ToString(); // Assign sprite name
+                    topLeftSprite.sprite = PlayerSpriteManager.GetPlayerSprite(PlayerManager.player2.spriteName + "_1"); // set portrait sprite
                 }
                 AssignBaseElementSprite(baseElement, TurnManager.isPlayer1Turn ? bottomBaseElementImage : topBaseElementImage);
                 TurnManager.SwitchTurn(); // Switch turn

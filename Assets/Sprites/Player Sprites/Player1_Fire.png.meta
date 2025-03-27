@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f47a77a82ccbc624e998a0dc886a4370
+guid: ae95a6d57f5f60748a1b688d0f5fb8ed
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4700075526140245643
-    second: AlcheMergeSprite2_GREEN_ALTjewelstyle_0
+      213: 3703417013818073536
+    second: Player1_Fire_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,23 +113,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AlcheMergeSprite2_GREEN_ALTjewelstyle_0
+      name: Player1_Fire_0
       rect:
         serializedVersion: 2
-        x: 278
+        x: 260
         y: 113
         width: 486
         height: 696
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 57947e6063af5ceb0800000000000000
-      internalID: -4700075526140245643
+      spriteID: 0c1a3cb072e256330800000000000000
+      internalID: 3703417013818073536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player1_Fire_1
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 570
+        width: 290
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35dc9eaed42d7a349a74aed3a13a9e85
+      internalID: 51579333
       vertices: []
       indices: 
       edges: []
@@ -138,7 +160,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 8062465254c6fbe48b09b1d2b2cf9b7e
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +170,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      AlcheMergeSprite2_GREEN_ALTjewelstyle_0: -4700075526140245643
+      Player1_Fire_0: 3703417013818073536
+      Player1_Fire_1: 51579333
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

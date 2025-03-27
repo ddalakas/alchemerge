@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cd657774452a96649a1291e5568cdf0f
+guid: 147cef504b6d7b44b889b84646353164
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3755798978917141744
-    second: AlcheMergeSprite1_WHITE_0
+      213: -3060610422300978028
+    second: Player2_Water_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -109,40 +109,49 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AlcheMergeSprite1_WHITE_0
+      name: Player2_Water_0
       rect:
         serializedVersion: 2
-        x: 260
+        x: 278
         y: 113
-        width: 583
-        height: 705
+        width: 486
+        height: 696
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0137edd4ab8b0ebc0800000000000000
-      internalID: -3755798978917141744
+      spriteID: 49454e669078685d0800000000000000
+      internalID: -3060610422300978028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player2_Water_1
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 570
+        width: 290
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d796aac54dac6b748b86bfbaec262a00
+      internalID: 900270611
       vertices: []
       indices: 
       edges: []
@@ -151,7 +160,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 45822c72a9d4ba442aef1359ad58004b
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +170,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      AlcheMergeSprite1_WHITE_0: -3755798978917141744
+      Player2_Water_0: -3060610422300978028
+      Player2_Water_1: 900270611
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

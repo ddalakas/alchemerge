@@ -110,7 +110,7 @@ public class PlayingFieldManager : MonoBehaviour
             }
             PlayerManager.player1.attack = player1Attack;
             PlayerManager.player1.defence = player1Defence;
-            PlayerManager.player1.health += player1Health;
+            PlayerManager.player1.health = player1Health + 50; // Player 1 has a base health of 50
 
         }
         else
@@ -131,7 +131,7 @@ public class PlayingFieldManager : MonoBehaviour
             }
             PlayerManager.player2.attack = player2Attack;
             PlayerManager.player2.defence = player2Defence;
-            PlayerManager.player2.health += player2Health;
+            PlayerManager.player2.health = player2Health + 50; // Player 2 has a base health of 50
         }
     }
 }

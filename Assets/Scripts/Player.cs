@@ -8,6 +8,8 @@ public class Player
     public enum element { Earth, Fire, Water, Wind };
     public element baseElement;
 
+    public string spriteName;
+
     public Player(int attack, int defence, int health)
     {
         this.attack = attack;
