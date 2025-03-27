@@ -24,14 +24,18 @@ public class CodexEntry : MonoBehaviour
     public TMP_Text healthText; // health value
 
     // method to setup a codex entry
-    public void Setup(string powerSourceAName, string powerSourceBName, string mergeResultName, Sprite powerSourceA, Sprite powerSourceB, Sprite mergeResult)
-    {
+    public void Setup(string powerSourceAName, string powerSourceBName, string mergeResultName, Sprite powerSourceA, Sprite powerSourceB, Sprite mergeResult,
+                      string attackValue, string defenseValue, string healthValue)
+    {   
         powerSourceAText.text = powerSourceAName; //  set the text of the Power Source A
         powerSourceBText.text = powerSourceBName; //  set the text of the Power Source B
         mergeResultText.text = mergeResultName; //  set the text of the merge result
         powerSourceAIcon.sprite = powerSourceA; //  set the icon of the Power Source A
         powerSourceBIcon.sprite = powerSourceB; // set the icon of the Power Source B
         mergeResultIcon.sprite = mergeResult; // set the icon of the merge result
+        attackText.text= attackValue; // set the attack value
+        defenseText.text = defenseValue; // set the defense value
+        healthText.text = healthValue; // set the health value
     }
 }
 
