@@ -153,35 +153,43 @@ public class PowerSource : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             if (satchelSlot != null) // If PowerSource was in a satchel slot
             {
                 int satchelSlotIndex = System.Array.IndexOf(SatchelManager.Instance.satchelSlots, satchelSlot);
-                if (TurnManager.isPlayer1Turn)
+                if (satchelSlotIndex != -1) // ensure that this Power Source originated from the Satchel
                 {
-                    // Check if Player 2 has a PowerSource in the same slot
-                    if (SatchelManager.Instance.player2SatchelPowerSources[satchelSlotIndex] == null) //
-                    {
-                        SatchelManager.Instance.satchelSlots[satchelSlotIndex].isOccupied = false; // Ensure the slot is marked as unoccupied
-                    }
-                    SatchelManager.Instance.player1SatchelPowerSources[satchelSlotIndex] = null; // Remove from satchel
-                }
-                else
-                {
-                    // Check if Player 1 has a PowerSource in the same slot
-                    if (SatchelManager.Instance.player1SatchelPowerSources[satchelSlotIndex] == null) //
-                    {
-                        SatchelManager.Instance.satchelSlots[satchelSlotIndex].isOccupied = false; // Ensure the slot is marked as unoccupied
-                    }
-                    SatchelManager.Instance.player2SatchelPowerSources[satchelSlotIndex] = null; // Remove from satchel
-                }
-                satchelSlot = null; // Clear the Power Source's satchel slot reference
-            }
 
+                    if (TurnManager.isPlayer1Turn)
+                    {
+                        // Check if Player 2 has a PowerSource in the same slot
+                        if (SatchelManager.Instance.player2SatchelPowerSources[satchelSlotIndex] == null) //
+                        {
+                            SatchelManager.Instance.satchelSlots[satchelSlotIndex].isOccupied = false; // Ensure the slot is marked as unoccupied
+                        }
+                        SatchelManager.Instance.player1SatchelPowerSources[satchelSlotIndex] = null; // Remove from satchel
+                    }
+                    else
+                    {
+                        // Check if Player 1 has a PowerSource in the same slot
+                        if (SatchelManager.Instance.player1SatchelPowerSources[satchelSlotIndex] == null) //
+                        {
+                            SatchelManager.Instance.satchelSlots[satchelSlotIndex].isOccupied = false; // Ensure the slot is marked as unoccupied
+                        }
+                        SatchelManager.Instance.player2SatchelPowerSources[satchelSlotIndex] = null; // Remove from satchel
+                    }
+                    satchelSlot = null; // Clear the Power Source's satchel slot reference
+                }
+            }
             Debug.Log("PowerSource was placed in the playing field at slot + " + slotIndex);
         }
         else
         {
-            Debug.Log("No valid slot found.");
-            // Return to original position if no valid slot
-            transform.SetParent(originalParent);
-            rectTransform.anchoredPosition = originalPosition;
+            Debug.Log("No open slot found.");
+            bool mergeFound = PlayingFieldManager.Instance.GetValidMerge(transform.position, gameObject.GetComponent<PowerSource>()); // Check for fusion opportunities
+
+            if (!mergeFound)
+            {
+                // Return to original position if no valid slot
+                transform.SetParent(originalParent);
+                rectTransform.anchoredPosition = originalPosition;
+            }
         }
 
         // Calculate Player Stats

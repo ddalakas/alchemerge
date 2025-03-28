@@ -1,22 +1,28 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+[DefaultExecutionOrder(0)] // Ensure this script runs after PowerSourceDataLoader
 public class PowerSourceManager : MonoBehaviour
 {
     public static PowerSourceList powerSourceList; // List of all PowerSources
-
     public Sprite[] powerSourceSprites; // Array of all PowerSource sprites
     public static Dictionary<string, Sprite> spriteDict = new Dictionary<string, Sprite>(); // Dictionary to store PowerSource sprites
     public static Dictionary<string, PowerSourceData> powerSourceDict = new Dictionary<string, PowerSourceData>(); // Dictionary to store PowerSource data
 
     private void Awake()
     {
-        // Load PowerSource sprites into Power Source Sprite dictionary
+        // Load PowerSource sprites into Power Source Sprite dictionary 
+        
         foreach (Sprite sprite in powerSourceSprites)
         {
             spriteDict.Add(sprite.name, sprite);
+        } 
+        
+        if (powerSourceList == null)
+        {
+            Debug.Log("PowerSourceList doesn't exist");
         }
-
+        
         // Load PowerSource data into Power Source Data dictionary
         foreach (PowerSourceData ps in powerSourceList.PowerSources)
         {

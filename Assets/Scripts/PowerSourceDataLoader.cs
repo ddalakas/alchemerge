@@ -1,10 +1,10 @@
 using UnityEngine;
-
-public class PowerSourceLoader : MonoBehaviour
+[DefaultExecutionOrder(-100)] // Ensure this script runs before PowerSourceManager
+public class PowerSourceDataLoader : MonoBehaviour
 {
     public TextAsset jsonFile; // Reference to the JSON file containg the PowerSource data.
 
-    void Start()
+    void Awake()
     {
         if (jsonFile != null)
         {
@@ -14,7 +14,7 @@ public class PowerSourceLoader : MonoBehaviour
             {
                 foreach (PowerSourceData ps in powerSourceData.PowerSources)
                 {
-                    Debug.Log($"Loaded: {ps.powerSourceName}, Attack: {ps.attack}, Defence: {ps.defence}, Health: {ps.health}");
+                   Debug.Log($"Loaded: {ps.powerSourceName}, Attack: {ps.attack}, Defence: {ps.defence}, Health: {ps.health}");
                 }
                 PowerSourceManager.powerSourceList = powerSourceData; // Assign the PowerSource data to the PowerSourceManager.
             }

@@ -22,7 +22,7 @@ public class CodexManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(codexCanvas); // Keep Codex canvas across scenes
             DontDestroyOnLoad(gameObject); // Keep CodexManager across scenes
-            
+
         }
         else
         {
@@ -35,28 +35,29 @@ public class CodexManager : MonoBehaviour
     }
 
     void PopulateCodex()
-    {
-
+    {   
         // Loop through every recipe from the list in FusionMergeController
         foreach (var recipe in FusionMergeController.Instance.recipes)
         {
             // Instantiate a new Codex entry prefab
-            GameObject entry = Instantiate(codexEntryPrefab, codexContentParent);
+            Debug.Log(recipe.powerSourceAName + " + " + recipe.powerSourceBName + " = " + recipe.mergeResultName);
+            GameObject entry = Instantiate(codexEntryPrefab, codexContentParent);   
 
             // Get the CodexEntry component from the prefab
             CodexEntry codexEntry = entry.GetComponent<CodexEntry>();
             if (codexEntry != null)
-            {
+            {   
                 // Get icons for each Power Source
-                //Sprite spriteA = // dictionary gets sprite A
-                //Sprite spriteB = // dictionary gets sprite B
-                //Sprite spriteResult = // dictionary gets result sprite
+                Sprite spriteA = PowerSourceManager.GetPowerSourceSprite(recipe.powerSourceAName); // get sprite A from dictionary
+                Sprite spriteB = PowerSourceManager.GetPowerSourceSprite(recipe.powerSourceBName); // get sprite B from dictionary
+                Sprite spriteResult = PowerSourceManager.GetPowerSourceSprite(recipe.mergeResultName); // get sprite for merge result from dictionary
 
-                // Get stats of each Power Source from existing array in PowerSourceManager
-                // PowerSourceManager.Instance.GetPowerSource(recipe.powerSourceAName);
+                // Get the stats for the resultant Power Source
+                PowerSourceData resultData = PowerSourceManager.GetPowerSourceData(recipe.mergeResultName);
+                if (resultData == null) Debug.LogError("Result data is null");
 
                 // Setup the entry with text and icon.
-                //codexEntry.Setup(recipe.powerSourceAName, recipe.powerSourceBName, recipe.mergeResultName, spriteA, spriteB, spriteResult);
+                codexEntry.Setup(recipe.powerSourceAName, recipe.powerSourceBName, recipe.mergeResultName, spriteA, spriteB, spriteResult, resultData);
             }
         }
     }

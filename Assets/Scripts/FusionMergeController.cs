@@ -19,7 +19,7 @@ public class FusionMergeController : MonoBehaviour
     public static FusionMergeController Instance; // Singleton pattern
     public TextAsset csvFile; // external CSV containing recipes
     public List<MergeRecipe> recipes = new List<MergeRecipe>();
-    
+
 
     void Awake()
     {
@@ -59,11 +59,12 @@ public class FusionMergeController : MonoBehaviour
 
     public string GetMergeResult(string powerSourceA, string powerSourceB)
     {
+        Debug.Log("Checking for merge result: " + powerSourceA + " + " + powerSourceB);
         foreach (var recipe in recipes)
         {
             // check in either order
             if ((recipe.powerSourceAName == powerSourceA && recipe.powerSourceBName == powerSourceB) ||
-                (recipe.powerSourceAName == powerSourceA && recipe.powerSourceBName == powerSourceB))
+                (recipe.powerSourceAName == powerSourceB && recipe.powerSourceBName == powerSourceA))
             {
                 return recipe.mergeResultName;
             }

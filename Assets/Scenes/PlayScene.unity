@@ -9257,6 +9257,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  powerSourcePrefab: {fileID: 0}
 --- !u!4 &1438014815
 Transform:
   m_ObjectHideFlags: 0
@@ -10603,7 +10604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1715758489
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10707,6 +10708,16 @@ MonoBehaviour:
     slotTransform: {fileID: 1070610179}
   - isOccupied: 0
     slotTransform: {fileID: 221622}
+  player1SatchelPowerSources:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  player2SatchelPowerSources:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1738123312
 Transform:
   m_ObjectHideFlags: 0
