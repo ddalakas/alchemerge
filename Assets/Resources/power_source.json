@@ -2,7 +2,7 @@
   "PowerSources": [
     { "powerSourceName": "Fire", "attack": 30, "defence": 20, "health": 0 },
     { "powerSourceName": "Water", "attack": 20, "defence": 10, "health": 20 },
-    { "powerSourceName": "Earth", "attack": 20, "defence": 30, "health": 0 },
+    { "powerSourceName": "Earth", "attack": 30, "defence": 20, "health": 0 },
     { "powerSourceName": "Wind", "attack": 20, "defence": 20, "health": 10 },
     { "powerSourceName": "Cloud", "attack": 30, "defence": 30, "health": 40 },
     { "powerSourceName": "Lava", "attack": 70, "defence": 30, "health": 0 },

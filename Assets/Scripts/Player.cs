@@ -8,6 +8,8 @@ public class Player
     public element baseElement;
     public string spriteName;
 
+    public PowerSource activePowerSource; // Active PowerSource
+
     public string[] unlockedPowerSources = new string[37]; // Array of unlocked PowerSource names
 
     public Player(int attack, int defence, int health)

@@ -45,8 +45,6 @@ public class SatchelManager : MonoBehaviour
                 Debug.Log("PowerSource spawned.");
 
                 GameObject newPowerSource = Instantiate(powerSourcePrefab, satchelSlots[i].slotTransform);
-                newPowerSource.transform.localPosition = Vector3.zero; // Reset position within the slot
-                newPowerSource.transform.localScale = Vector3.one; // Ensure correct scaling
 
                 PowerSource ps = newPowerSource.GetComponent<PowerSource>();
                 ps.satchelSlot = satchelSlots[i];
