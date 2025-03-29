@@ -556,10 +556,10 @@ TextureImporter:
       name: hyptosis_til-art-batch-2_20
       rect:
         serializedVersion: 2
-        x: 640
-        y: 928
-        width: 32
-        height: 32
+        x: 672
+        y: 832
+        width: 83
+        height: 124
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2228,9 +2228,9 @@ TextureImporter:
       name: hyptosis_til-art-batch-2_96
       rect:
         serializedVersion: 2
-        x: 576
-        y: 832
-        width: 32
+        x: 672
+        y: 800
+        width: 64
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2902,28 +2902,6 @@ TextureImporter:
       bones: []
       spriteID: 329a459af8b49554287d80cb699932e4
       internalID: 1596878132
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hyptosis_til-art-batch-2_127
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 800
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3f237982da4c2e34a8190c510aea1d56
-      internalID: -353762824
       vertices: []
       indices: 
       edges: []
@@ -6607,9 +6585,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 576
-        width: 32
-        height: 32
+        y: 545
+        width: 64
+        height: 63
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -14614,10 +14592,10 @@ TextureImporter:
       name: hyptosis_til-art-batch-2_659
       rect:
         serializedVersion: 2
-        x: 480
-        y: 128
-        width: 32
-        height: 32
+        x: 482
+        y: 0
+        width: 157
+        height: 126
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -17140,6 +17118,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: hyptosis_til-art-batch-2_774
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 831
+        width: 63
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67601f2bdc417ee4e83920e834343a0b
+      internalID: -226866682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -17904,6 +17904,7 @@ TextureImporter:
       hyptosis_til-art-batch-2_771: 2096874754
       hyptosis_til-art-batch-2_772: -717286815
       hyptosis_til-art-batch-2_773: -2013325239
+      hyptosis_til-art-batch-2_774: -226866682
       hyptosis_til-art-batch-2_78: 1571537571
       hyptosis_til-art-batch-2_79: -417705238
       hyptosis_til-art-batch-2_8: 1366713031
