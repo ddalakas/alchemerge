@@ -74,7 +74,7 @@ public class IconPositioner : MonoBehaviour
         else if (text.text == "Sinkhole")
         {
             newPosition.x = text.rectTransform.position.x + textWidth * mulFactor + offset + 10f;
-            newPosition.y = text.rectTransform.position.y - 5f;
+            newPosition.y = text.rectTransform.position.y - 2f;
         }
         else if (text.text == "Petrified Forest")
         {

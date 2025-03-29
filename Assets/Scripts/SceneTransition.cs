@@ -6,7 +6,22 @@ using System.Collections;
 public class SceneTransition : MonoBehaviour
 {
     public Image fadeImage;
+
+    public GameObject sceneManager; // Reference to the scene manager object
     public float fadeDuration = 2.0f; // two second fade duration
+
+
+    private void Awake()
+    {
+        if (fadeImage == null)
+        {
+            Debug.LogError("Fade Image is not assigned in the inspector.");
+            return;
+        }
+
+        DontDestroyOnLoad(sceneManager); // Prevent the scene manager from being destroyed when loading a new scene
+
+    }
 
     private void Start()
     {

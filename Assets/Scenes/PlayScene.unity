@@ -9257,7 +9257,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  powerSourcePrefab: {fileID: 0}
 --- !u!4 &1438014815
 Transform:
   m_ObjectHideFlags: 0
@@ -10467,6 +10466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 1633443648}
+  sceneManager: {fileID: 0}
   fadeDuration: 2
 --- !u!1 &1693619470
 GameObject:
