@@ -144,6 +144,7 @@ public class PowerSource : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                 // Remove from previous slot
                 int previousSlotIndex = System.Array.IndexOf(PlayingFieldManager.Instance.playingFieldSlots, playingFieldSlot);
                 PlayingFieldManager.Instance.RemovePowerSourceFromSlot(previousSlotIndex);
+                Debug.LogWarning("PowerSource was removed from the playing field at slot + " + previousSlotIndex);
             }
 
             // Add to new slot
@@ -155,7 +156,6 @@ public class PowerSource : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                 int satchelSlotIndex = System.Array.IndexOf(SatchelManager.Instance.satchelSlots, satchelSlot);
                 if (satchelSlotIndex != -1) // ensure that this Power Source originated from the Satchel
                 {
-
                     if (TurnManager.isPlayer1Turn)
                     {
                         // Check if Player 2 has a PowerSource in the same slot
@@ -194,7 +194,7 @@ public class PowerSource : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
         // Calculate Player Stats
         PlayerManager.CalculatePlayerStats();
-        
+
         // Update the current player's stats on the screen
         if (TurnManager.isPlayer1Turn)
         {

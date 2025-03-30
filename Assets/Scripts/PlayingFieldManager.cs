@@ -95,13 +95,12 @@ public class PlayingFieldManager : MonoBehaviour
     // Sums the stats of all PowerSources on the Playing Field and updates the player's stats (if it's their turn)
     public void SumPowerSourceStats()
     {
-        float multiplier = 1f; // multiplier
+        float multiplier; // multiplier
         if (TurnManager.isPlayer1Turn)
         {
             int player1Attack = 0;
             int player1Defence = 0;
-            int player1Health = 50; // Player 1 has a base health of 50
-
+            int player1Overhealth = 0;
 
             for (int i = 0; i < 5; i++)
             {
@@ -113,25 +112,25 @@ public class PlayingFieldManager : MonoBehaviour
                         multiplier = 1.25f; // Increase stats by 25% if the PowerSource matches the player's base element
                         player1Attack += (int)(powerSources[i].powerSourceData.attack * multiplier);
                         player1Defence += (int)(powerSources[i].powerSourceData.defence * multiplier);
-                        player1Health += (int)(powerSources[i].powerSourceData.health * multiplier);
+                        player1Overhealth += (int)(powerSources[i].powerSourceData.health * multiplier);
                     }
                     else
                     {
                         player1Attack += powerSources[i].powerSourceData.attack;
                         player1Defence += powerSources[i].powerSourceData.defence;
-                        player1Health += powerSources[i].powerSourceData.health;
+                        player1Overhealth += powerSources[i].powerSourceData.health;
                     }
                 }
             }
             PlayerManager.player1.attack = player1Attack;
             PlayerManager.player1.defence = player1Defence;
-            PlayerManager.player1.health = player1Health;
+            PlayerManager.player1.health = PlayerManager.player1.baseHealth + player1Overhealth; // Update health based on base health and overhealth
         }
         else
         {
             int player2Attack = 0;
             int player2Defence = 0;
-            int player2Health = 50; // Player 2 has a base health of 50
+            int player2Overhealth = 0;
 
             for (int i = 5; i < 10; i++)
             {
@@ -143,19 +142,19 @@ public class PlayingFieldManager : MonoBehaviour
                         multiplier = 1.25f; // Increase stats by 25% if the PowerSource matches the player's base element
                         player2Attack += (int)(powerSources[i].powerSourceData.attack * multiplier);
                         player2Defence += (int)(powerSources[i].powerSourceData.defence * multiplier);
-                        player2Health += (int)(powerSources[i].powerSourceData.health * multiplier);
+                        player2Overhealth += (int)(powerSources[i].powerSourceData.health * multiplier);
                     }
                     else
                     {
                         player2Attack += powerSources[i].powerSourceData.attack;
                         player2Defence += powerSources[i].powerSourceData.defence;
-                        player2Health += powerSources[i].powerSourceData.health;
+                        player2Overhealth += powerSources[i].powerSourceData.health;
                     }
                 }
             }
             PlayerManager.player2.attack = player2Attack;
             PlayerManager.player2.defence = player2Defence;
-            PlayerManager.player2.health = player2Health;
+            PlayerManager.player2.health = PlayerManager.player2.baseHealth + player2Overhealth; // Update health based on base health and overhealth
         }
     }
 
@@ -236,12 +235,55 @@ public class PlayingFieldManager : MonoBehaviour
         // Initialize with required references to canvas and text object
         fusion.Initialize(SatchelManager.Instance.mainCanvas, SatchelManager.Instance.nameText);
 
-        int slotIndex = System.Array.IndexOf(powerSources, powerSourceB);
-        Debug.Log($"Adding Fusion to Slot: {slotIndex}");
+        // Remove PowerSource A and B from the playing field and satchel
 
-        RemovePowerSourceFromSlot(slotIndex); // Remove PowerSource B from the slot
-        AddPowerSourceToSlot(slotIndex, fusion); // Add the Fusion to the slot
-        SumPowerSourceStats(); // Update player stats
+        int slotIndexA = System.Array.IndexOf(powerSources, powerSourceA);
+        int slotIndexB = System.Array.IndexOf(powerSources, powerSourceB);
+
+        if (slotIndexA != -1) // If PowerSource A is found in the playing field
+        {
+            RemovePowerSourceFromSlot(slotIndexA); // Remove PowerSource A from the slot
+        }
+        if (slotIndexB != -1) // If PowerSource B is found in the playing field
+        {
+            RemovePowerSourceFromSlot(slotIndexB); // Remove PowerSource B from the slot
+        }
+
+        if (powerSourceA.satchelSlot != null) // If PowerSource A was in a satchel slot
+        {
+            int satchelSlotIndex = System.Array.IndexOf(SatchelManager.Instance.satchelSlots, powerSourceA.satchelSlot);
+            if (satchelSlotIndex != -1) // Ensure that this Power Source originated from the Satchel
+            {
+                if (TurnManager.isPlayer1Turn)
+                {
+                    SatchelManager.Instance.player1SatchelPowerSources[satchelSlotIndex] = null; // Remove from Player 1's satchel
+                }
+                else
+                {
+                    SatchelManager.Instance.player2SatchelPowerSources[satchelSlotIndex] = null; // Remove from Player 2's satchel
+                }
+            }
+        }
+        if (powerSourceB.satchelSlot != null) // If PowerSource B was in a satchel slot
+        {
+            int satchelSlotIndex = System.Array.IndexOf(SatchelManager.Instance.satchelSlots, powerSourceB.satchelSlot);
+            if (satchelSlotIndex != -1) // Ensure that this Power Source originated from the Satchel
+            {
+                if (TurnManager.isPlayer1Turn)
+                {
+                    SatchelManager.Instance.player1SatchelPowerSources[satchelSlotIndex] = null; // Remove from Player 1's satchel
+                }
+                else
+                {
+                    SatchelManager.Instance.player2SatchelPowerSources[satchelSlotIndex] = null; // Remove from Player 2's satchel
+                }
+            }
+        }
+
+        // Add the Fusion PowerSource to the playing field
+        AddPowerSourceToSlot(slotIndexB, fusion); // Add the Fusion to the slot where PowerSource B was
+        fusion.satchelSlot = null; // Set the Fusion PowerSource's satchel slot to null
+        fusion.playingFieldSlot = playingFieldSlots[slotIndexB]; // Set the Fusion PowerSource's playing field slot to the same as PowerSource B
 
         Destroy(powerSourceA.gameObject); // Destroy PowerSource A
         Destroy(powerSourceB.gameObject); // Destroy PowerSource B

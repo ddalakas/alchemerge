@@ -160,15 +160,15 @@ public class UIManager : MonoBehaviour
         Canvas baseElementCanvas = GameObject.Find("Base Element Canvas").GetComponent<Canvas>();
         Canvas playCanvas = GameObject.Find("PlayCanvas").GetComponent<Canvas>();
         Canvas powerSourceSelectionCanvas = GameObject.Find("Power Source Selection Canvas").GetComponent<Canvas>();
-        
+
         if (powerSourceSelectionCanvas != null) Debug.Log("Power Source Selection Canvas found");
 
-        
+
         // References to managers
         settingsManagerObj = GameObject.Find("SettingsManager");
         codexManagerObj = GameObject.Find("CodexManager");
         soundManagerObj = GameObject.Find("SoundManager");
-        
+
         settingsManager = settingsManagerObj.GetComponent<SettingsManager>();
         codexManager = codexManagerObj.GetComponent<CodexManager>();
         soundManager = soundManagerObj.GetComponent<SoundManager>();
@@ -273,7 +273,7 @@ public class UIManager : MonoBehaviour
                 SatchelManager.Instance.SwitchPlayerSatchel(); // Switch the player satchel
 
                 // Spawn PowerSource 1
-                SatchelManager.Instance.SpawnPowerSource(PowerSourceManager.GetPowerSourceData(powerSourceChoices[0]));
+                SatchelManager.Instance.SpawnPowerSourceInSatchel(PowerSourceManager.GetPowerSourceData(powerSourceChoices[0]));
                 powerSourceSelectionCanvas.enabled = false; // Hide Power Source Selection Canvas
 
                 playCanvas.enabled = true; // Show Play Canvas
@@ -285,7 +285,7 @@ public class UIManager : MonoBehaviour
                 SatchelManager.Instance.SwitchPlayerSatchel(); // Switch the player satchel
 
                 // Spawn PowerSource 2
-                SatchelManager.Instance.SpawnPowerSource(PowerSourceManager.GetPowerSourceData(powerSourceChoices[1]));
+                SatchelManager.Instance.SpawnPowerSourceInSatchel(PowerSourceManager.GetPowerSourceData(powerSourceChoices[1]));
                 powerSourceSelectionCanvas.enabled = false; // Hide Power Source Selection Canvas
 
                 playCanvas.enabled = true; // Show Play Canvas

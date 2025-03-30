@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null) {
+        if (instance == null)
+        {
             instance = this; // Set the instance to this object
             DontDestroyOnLoad(gameObject); // Don't destroy this object when loading new scenes
         }
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.MainMenu:
-                StartCoroutine(SoundManager.instance.FadeInMusic(10.0f, 0.1f)); // Fade in music over 10 seconds to 10% volume
+                StartCoroutine(SoundManager.instance.FadeInMusic(3.5f, 0.1f)); // Fade in music over 3.5 seconds to 10% volume
                 SoundManager.instance.PlayMusic(SoundManager.instance.menuMusic);
                 break;
             case GameState.PlayPhase:

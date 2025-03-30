@@ -4,22 +4,24 @@ public class Player
     public int defence; // Player's defence stat
     public int health; // Player's health stat
 
+    public int baseHealth; // Player's base health stat
+    public int overhealth = 0; // Player's overhealth stat
+
     public enum element { Earth, Fire, Water, Wind };
     public element baseElement;
     public string spriteName;
 
     public PowerSource activePowerSource; // Active PowerSource
-
-    public int overhealth = 0; // Overhealth stat
     public bool gotBuffed = false; // Buffed stat
 
     public string[] unlockedPowerSources = new string[37]; // Array of unlocked PowerSource names
 
-    public Player(int attack, int defence, int health)
+    public Player(int attack, int defence, int baseHealth)
     {
         this.attack = attack;
         this.defence = defence;
-        this.health = health;
+        this.baseHealth = baseHealth;
+        health = baseHealth; // Initialize health to base health
 
         // Players start with all four Primal elements unlocked
         unlockedPowerSources[0] = "Earth";
