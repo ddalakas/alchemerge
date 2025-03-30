@@ -8,8 +8,10 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (instance == null) {
             instance = this; // Set the instance to this object
+            DontDestroyOnLoad(gameObject); // Don't destroy this object when loading new scenes
+        }
         else
             Destroy(gameObject); // Destroy the object the script is attached to
     }

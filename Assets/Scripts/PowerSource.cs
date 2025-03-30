@@ -194,7 +194,7 @@ public class PowerSource : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
         // Calculate Player Stats
         PlayerManager.CalculatePlayerStats();
-
+        
         // Update the current player's stats on the screen
         if (TurnManager.isPlayer1Turn)
         {

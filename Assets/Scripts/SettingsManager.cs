@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SettingsManager : MonoBehaviour
 {   
@@ -8,7 +9,10 @@ public class SettingsManager : MonoBehaviour
     public static SettingsManager Instance; // Singleton pattern
 
     [Header("UI References")]
-    public Button codexEnableButton;
+    public Button codexEnableButton; // Button to enable/disable the codex
+
+    public Button backToMainMenuButton; // Button to go back to the main menu
+
     public TMP_Text codexStatusText; // Text displayed on top of the button(ON/OFF)
 
     public GameObject settingsCanvas; // Reference to the settings canvas
@@ -69,7 +73,33 @@ public class SettingsManager : MonoBehaviour
     {
         // Toggle the settings menu
         settingsCanvas.SetActive(!settingsCanvas.activeSelf);
+
+
+        // Toggle Back to Main Menu button
+        if (backToMainMenuButton != null)
+        {
+            if (SceneManager.GetActiveScene().name == "MainMenuScene")
+            {
+                backToMainMenuButton.gameObject.SetActive(false); // Hide the button
+            }
+            else
+            {
+                backToMainMenuButton.gameObject.SetActive(true); // Show the button
+            }
+        } 
     }
 
+    public void LoadMainMenu()
+    {   
+        Debug.Log("Loading Main Menu");
+        ToggleSettings(); // Close the settings menu if it's open
+        UIManager.Instance.soundManager.audioSource.Stop(); // Stop the current music
+        UIManager.Instance.soundManager.audioSource.volume = 0.0f; // Set the volume to 0%
+
+        SceneTransition sceneTransition = FindAnyObjectByType<SceneTransition>(); // Find the SceneTransition component
+        sceneTransition.ChangeScene("MainMenuScene"); // Change the scene to Main Menu Scene
+        GameManager.instance.ChangeGameState(GameManager.GameState.MainMenu); // Change the game state to Main Menu
+    }
 }
+
  

@@ -10,6 +10,9 @@ public class Player
 
     public PowerSource activePowerSource; // Active PowerSource
 
+    public int overhealth = 0; // Overhealth stat
+    public bool gotBuffed = false; // Buffed stat
+
     public string[] unlockedPowerSources = new string[37]; // Array of unlocked PowerSource names
 
     public Player(int attack, int defence, int health)

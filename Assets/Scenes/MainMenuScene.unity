@@ -997,7 +997,7 @@ GameObject:
   - component: {fileID: 429147497}
   - component: {fileID: 429147496}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: BackToMainMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1079,10 +1079,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1050481392}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 593713694}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+        m_MethodName: LoadMainMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2015,6 +2015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   codexEnableButton: {fileID: 1384179409}
+  backToMainMenuButton: {fileID: 429147496}
   codexStatusText: {fileID: 1797556901}
   settingsCanvas: {fileID: 1602192003}
 --- !u!4 &593713695
@@ -4549,7 +4550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &1050481393
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5339,53 +5340,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270827478}
   m_CullTransparentMesh: 1
---- !u!1 &1338188564
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1338188566}
-  - component: {fileID: 1338188565}
-  m_Layer: 0
-  m_Name: SceneManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1338188565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338188564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea84311bdb8647443a69cd6aa006ad7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeImage: {fileID: 2011929531}
-  sceneManager: {fileID: 1338188564}
-  fadeDuration: 2
---- !u!4 &1338188566
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338188564}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 718.5861, y: 429.29364, z: -8.502966}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1347632646
 GameObject:
   m_ObjectHideFlags: 0
@@ -6684,7 +6638,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1602192004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10743,7 +10697,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 2011929531}
-  sceneManager: {fileID: 0}
   fadeDuration: 2
 --- !u!114 &2011929531
 MonoBehaviour:
@@ -11575,49 +11528,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rulesText: {fileID: 1417816407}
-  rulesContent: "<b>Core Gameplay</b>\r\n\r\nEach player has three statistics: <b>Attack</b>,
-    <b>Defence</b>, and <b>Health</b>. At the start of the game:  \r\n\u2022 Attack:
-    <b>0</b>  \r\n\u2022 Defence: <b>0</b>  \r\n\u2022 Health: <b>50</b>  \r\n\r\nA
-    player improves these statistics by playing <b>Power Sources</b> onto the <b>Playing
-    Field</b>. The main objective is to reduce the opponent\u2019s Health to <b>zero</b>. 
-    \r\nThere are <i>two</i> alternative win conditions, detailed under the <b>Winning
-    Conditions</b> section.  \r\n\r\n<b>Game Start</b>  \r\n\u2022 Each player selects
-    a base <b>Primal Element</b>.  \r\n\u2022 A player\u2019s Primal Element applies
-    a <b>1.25x multiplier</b> to any Power Source of the same type.  \r\n\r\n<b>Play
-    Phase</b>  \r\n1. The first player chooses from <b>two randomly generated Power
-    Sources</b>.  \r\n2. The chosen Power Source can be stored in the player\u2019s
-    <b>Satchel</b> or played onto the <b>Playing Field</b>.  \r\n3. If played, the
-    Power Source is marked as <b>Active</b>.  \r\n4. The device is passed to the
-    second player, who repeats the process.  \r\n5. The second player has <b>no knowledge</b>
-    of the first player\u2019s move.  \r\n6. Each player must commit their move within
-    <b>60 seconds</b>.  \r\n\r\n<b>Combat Phase</b>  \r\n\u2022 Both players\u2019
-    <b>Active Power Sources</b> engage in combat.  \r\n\u2022 If an Active Power
-    Source is <i>strong</i> against the opponent\u2019s, it gains a <b>1.5x multiplier</b>. 
-    \r\n\u2022 This buff applies to <b>Attack, Defence, and Health</b> only during
-    combat.  \r\n\u2022 <b>Overcharge Health</b> is granted if the buff increases
-    Health. This extra health acts as a temporary buffer but disappears after combat. 
-    \r\n\u2022 A player\u2019s Attack is subtracted from the opponent\u2019s Defence.
-    If Attack exceeds Defence, the remaining damage is dealt to the opponent\u2019s
-    Health.  \r\n\u2022 If a player\u2019s Health reaches <b>zero</b>, they lose
-    the game.  \r\n\r\n<b>Fusions</b>  \r\n\u2022 Players can merge two Power Sources
-    on the <b>Playing Field</b> to create a <b>Fusion</b>.  \r\n\u2022 Once a Fusion
-    is created, it may appear as an option at the start of a turn.  \r\n\u2022 Fusion
-    probability is lower than standard Primal Elements.  \r\n\r\n<b>Fusion Tiers</b> 
-    \r\n\u2022 <b>Tier 1:</b> Two Primal Elements  \r\n\u2022 <b>Tier 2:</b> A Tier
-    1 Fusion + a Primal Element  \r\n\u2022 <b>Tier 3:</b> Two Tier 1 Fusions  \r\n\r\n<b>Playing
-    Field</b>  \r\n\u2022 Two halves, one for each player.  \r\n\u2022 Each half
-    contains <b>five slots</b> for Power Sources.  \r\n\r\n<b>Satchel</b>  \r\n\u2022
-    Players can store up to <b>four</b> Power Sources.  \r\n\u2022 If full, the player
-    cannot receive new Power Sources.  \r\n\r\n<b>Player Rules</b>  \r\n<i>A player
-    must:</i>  \r\n\u2022 Select a base Primal Element at the start.  \r\n\u2022
-    Choose one of two randomly generated Power Sources each turn.  \r\n\u2022 Select
-    the Primal Element that a Fusion inherits from.  \r\n\u2022 Commit their move
-    within <b>60 seconds</b>.  \r\n\r\n<i>A player may:</i>  \r\n\u2022 Create any
-    number of Fusions per round.  \r\n\u2022 Choose not to play or merge a Power
-    Source during their turn.  \r\n\r\n<b>Winning Conditions</b>  \r\n1. Reduce the
-    opponent\u2019s Health to <b>zero</b>.  \r\n2. Have <b>three Tier 3 Fusions</b>
-    on the Playing Field.  \r\n3. Have <b>two Tier 3 Fusions and two Tier 2 Fusions</b>
-    on the Playing Field.  \r\n"
+  rulesContent: "<b>Core Gameplay</b>\r\n\r\nEach player has three statistics:\r\n\u2022
+    Attack: <color=red>0</color>\r\n\u2022 Defence: <color=blue>0</color>\r\n\u2022
+    Health: <color=green>50</color>\r\n\r\nA player improves these statistics by
+    playing Power Sources onto the Playing Field.  \r\nThe main objective is to reduce
+    the opponent\u2019s Health to zero.\r\n\r\nThere are also two alternative win
+    conditions, detailed under the <b>Winning Conditions</b> section.\r\n\r\n<b>Game
+    Start</b>\r\n\u2022 Each player selects a base Primal Element.  \r\n\u2022 A
+    player\u2019s Primal Element applies a <color=green>1.25x</color> multiplier
+    to any Power Source of the same type.\r\n\r\n<b>Play Phase</b>\r\n\u2022 The
+    first player chooses from two randomly generated Power Sources.  \r\n\u2022 The
+    chosen Power Source can be stored in the player\u2019s Satchel or played onto
+    the Playing Field.  \r\n\u2022 If played, the Power Source becomes <color=yellow>Active</color>. 
+    \r\n\u2022 The device is passed to the second player, who repeats the process. 
+    \r\n\u2022 The second player has <color=blue>no knowledge</color> of the first
+    player\u2019s move.  \r\n\u2022 Each player must commit their move within <color=#808080>60
+    seconds</color>.\r\n\r\n<b>Combat Phase</b>\r\n\u2022 Both players\u2019 Active
+    Power Sources engage in combat.  \r\n\u2022 If an Active Power Source is strong
+    against the opponent\u2019s, it gains a <color=red>1.5x</color> multiplier (this
+    buff applies to Attack, Defence, and Health only during combat).  \r\n\u2022
+    Overcharge Health is granted if the buff increases Health. This extra health
+    acts as a temporary buffer but disappears after combat.  \r\n\u2022 A player\u2019s
+    Attack is subtracted from the opponent\u2019s Defence.  \r\n\u2022 If Attack
+    exceeds Defence, the remaining damage is dealt to the opponent\u2019s Health. 
+    \r\n\u2022 If a player\u2019s Health reaches <color=black>zero</color>, they
+    lose the game.\r\n\r\n<b>Fusions</b>\r\n\u2022 Players can merge two Power Sources
+    on the Playing Field to create a Fusion.  \r\n\u2022 Once a Fusion is created,
+    it may appear as an option at the start of a turn.  \r\n\u2022 Fusion probability
+    is lower than that of standard Primal Elements.\r\n\r\n<b>Fusion Tiers</b>\r\n\u2022
+    <color=green>Tier 1:</color> Two Primal Elements  \r\n\u2022 <color=blue>Tier
+    2:</color> A Tier 1 Fusion + a Primal Element  \r\n\u2022 <color=purple>Tier
+    3:</color> Two Tier 1 Fusions\r\n\r\n<b>Playing Field</b>\r\n\u2022 Two halves,
+    one for each player.  \r\n\u2022 Each half contains <color=orange>five slots</color>
+    for Power Sources.\r\n\r\n<b>Satchel</b>\r\n\u2022 Players can store up to <color=cyan>four
+    Power Sources</color>.  \r\n\u2022 If full, the player cannot receive new Power
+    Sources.\r\n\r\n<b>Player Rules</b>\r\nA player must:  \r\n\u2022 Select a base
+    Primal Element at the start.  \r\n\u2022 Choose one of two randomly generated
+    Power Sources each turn.  \r\n\u2022 Select the Primal Element that a Fusion
+    inherits from.  \r\n\u2022 Commit their move within 60 seconds.\r\n\r\nA player
+    may:  \r\n\u2022 Create any number of Fusions per round.  \r\n\u2022 Choose not
+    to play or merge a Power Source during their turn.\r\n\r\n<b>Winning Conditions</b>\r\nA
+    player wins if they achieve one of the following:\r\n1) Reduce the opponent\u2019s
+    Health to <color=black>zero</color>.  \r\n2) Have <color=purple>three Tier 3
+    Fusions</color> on the Playing Field.  \r\n3) Have <color=blue>two Tier 3 Fusions</color>
+    and <color=green>two Tier 2 Fusions</color> on the Playing Field.\r\n"
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -11641,4 +11595,3 @@ SceneRoots:
   - {fileID: 1055836287}
   - {fileID: 1230071452}
   - {fileID: 1050481397}
-  - {fileID: 1338188566}
