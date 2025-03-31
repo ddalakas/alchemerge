@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public static Player player1 = new(100, 20, 50); // Create Player 1 with 0 attack, 0 defence, and 50 health
-    public static Player player2 = new(50, 20, 50); // Create Player 2 with 0 attack, 0 defence, and 50 health
+    public static Player player1 = new(100, 20, 50) { baseElement = Player.element.Fire };
+    public static Player player2 = new(50, 20, 50) { baseElement = Player.element.Fire };
 
     public static void Player1Attack()
     {
@@ -31,4 +31,5 @@ public class PlayerManager : MonoBehaviour
 
 
     }
+
 }
