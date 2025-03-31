@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class CodexEntry : MonoBehaviour
+public class CodexFusion : MonoBehaviour
 {
     // UI elements for recipe section
     public Image powerSourceAIcon;
@@ -24,6 +24,8 @@ public class CodexEntry : MonoBehaviour
     public Image healthIcon; // health icon
     public TMP_Text healthText; // health value
 
+    public TMP_Text tierText; // tier value
+
     // method to setup a codex entry
     public void Setup(string powerSourceAName, string powerSourceBName, string mergeResultName, Sprite powerSourceA, Sprite powerSourceB, Sprite mergeResult,
                       PowerSourceData data)
@@ -39,6 +41,17 @@ public class CodexEntry : MonoBehaviour
         attackText.text = data.attack.ToString(); // set the attack value
         defenceText.text = data.defence.ToString(); // set the defense value
         healthText.text = data.health.ToString(); // set the health value
+
+        if (data.tier == 1) {
+            tierText.color = new Color(28f / 255f, 201f / 255f, 143f / 255f, 0.82f); // set the tier 1 color to green
+        }
+        else if (data.tier == 2) {
+            tierText.color = new Color(47f/ 255f, 89f / 255f, 214f / 255f, 0.82f); // set the tier 2 color to blue
+        }
+        else {
+            tierText.color = new Color(201f/ 255f, 80f / 255f, 64f / 255f, 0.82f); // set the tier 3 color to red
+        }
+        tierText.text = "(T"+data.tier.ToString()+")"; // set the tier value
     }
 }
 

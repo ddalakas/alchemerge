@@ -8,11 +8,12 @@ public class CodexManager : MonoBehaviour
      public static CodexManager Instance;
 
     [Header("Prefabs & UI References")]
-    public GameObject codexEntryPrefab; // reference to prefab
+    public GameObject codexFusionPrefab; // reference to prefab
+    public GameObject codexPrimalPrefab; // reference to prefab
     public Transform codexContentParent;
-
-
     public GameObject codexCanvas;
+
+    private string[] primalElements = { "Fire", "Water", "Earth", "Wind" }; // List of primal elements
 
     
     void Awake()
@@ -35,17 +36,43 @@ public class CodexManager : MonoBehaviour
     }
 
     void PopulateCodex()
-    {   
-        // Loop through every recipe from the list in FusionMergeController
-        foreach (var recipe in FusionMergeController.Instance.recipes)
-        {
-            // Instantiate a new Codex entry prefab
-            Debug.Log(recipe.powerSourceAName + " + " + recipe.powerSourceBName + " = " + recipe.mergeResultName);
-            GameObject entry = Instantiate(codexEntryPrefab, codexContentParent);   
+    {       
+        // Add Primal Elements to the Codex , primal elements don't have recipes
+        Debug.Log("Adding Primal Elements to Codex");
+        foreach (var primal in primalElements) {
+        
+            Debug.Log(primal + " added to Codex");
+            GameObject primalEntry = Instantiate(codexPrimalPrefab, codexContentParent);   
 
             // Get the CodexEntry component from the prefab
-            CodexEntry codexEntry = entry.GetComponent<CodexEntry>();
-            if (codexEntry != null)
+            CodexPrimal codexPrimal = primalEntry.GetComponent<CodexPrimal>();
+
+            if (codexPrimal != null)
+            {   
+                // Get icon for the Primal Element
+                Sprite sprite = PowerSourceManager.GetPowerSourceSprite(primal); // get sprite from dictionary
+
+                // Get the stats for the Primal Element
+                PowerSourceData primalData = PowerSourceManager.GetPowerSourceData(primal);
+                if (primalData == null) Debug.LogError("Result data is null");
+
+                // Setup the Codex entry with text and icon.
+                codexPrimal.Setup(primal, sprite, primalData);
+            }
+
+        }
+       
+
+        // Loop through every recipe from the list in FusionMergeController
+        foreach (var recipe in FusionMergeController.Instance.recipes)
+        {   
+            Debug.Log("Adding " + recipe.powerSourceAName + " + " + recipe.powerSourceBName + " = " + recipe.mergeResultName + " to Codex");
+            // Instantiate a new Codex entry prefab
+            GameObject fusion = Instantiate(codexFusionPrefab, codexContentParent);   
+
+            // Get the CodexEntry component from the prefab
+            CodexFusion codexFusion = fusion.GetComponent<CodexFusion>();
+            if (codexFusion != null)
             {   
                 // Get icons for each Power Source
                 Sprite spriteA = PowerSourceManager.GetPowerSourceSprite(recipe.powerSourceAName); // get sprite A from dictionary
@@ -57,7 +84,7 @@ public class CodexManager : MonoBehaviour
                 if (resultData == null) Debug.LogError("Result data is null");
 
                 // Setup the entry with text and icon.
-                codexEntry.Setup(recipe.powerSourceAName, recipe.powerSourceBName, recipe.mergeResultName, spriteA, spriteB, spriteResult, resultData);
+                codexFusion.Setup(recipe.powerSourceAName, recipe.powerSourceBName, recipe.mergeResultName, spriteA, spriteB, spriteResult, resultData);
             }
         }
     }

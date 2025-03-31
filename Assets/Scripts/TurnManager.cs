@@ -78,34 +78,44 @@ public class TurnManager : MonoBehaviour
 
     // Coroutine to handle the countdown logic
     private IEnumerator Countdown()
-    {   
-        Color customRed;
-        UnityEngine.ColorUtility.TryParseHtmlString("#CO2F00", out customRed); // Define custom red
+{
+    while (currentTime > 0)
+    {
+        if (!isPaused)
+        {   
+            currentTime -= Time.deltaTime;
 
-        while (currentTime > 0)
-        {
-            if (!isPaused)
+            int minutes = Mathf.FloorToInt(currentTime / 60); // Get minutes digit
+            int seconds = Mathf.CeilToInt(currentTime % 60); // Get seconds digits
+
+            // Fix for the "0:60" issue
+            if (seconds == 60)
             {
-                currentTime -= Time.deltaTime;
-
-                // Make text red if less than 10 seconds
-                if (currentTime < 10)
-                {    
-                     UIManager.Instance.timerText.color =  // customRed; // Change text color to red 
-                     new Color(0.83f, 0.0f, 0.0f, 1.0f);
-                     UIManager.Instance.timerText.text = "0:0" + Mathf.Ceil(currentTime).ToString();;
-                }
-                else
-                {
-                    UIManager.Instance.timerText.color = Color.white;
-                }
-                UIManager.Instance.timerText.text = "0:"+Mathf.Ceil(currentTime).ToString();
+                minutes += 1;
+                seconds = 0;
             }
-            yield return null;
+            
+            // Ensure two zeros for seconds
+            string formattedTime = minutes + ":" + seconds.ToString("00");
+
+            // Change color when under 10 seconds
+            if (currentTime < 10)
+            {   
+                UIManager.Instance.timerText.color = new Color(0.83f, 0.0f, 0.0f, 1.0f); // Custom red colour
+            }
+            else
+            {
+                UIManager.Instance.timerText.color = Color.white;
+            }
+
+            UIManager.Instance.timerText.text = formattedTime;
         }
-         UIManager.Instance.timerText.text = "0:00"; // Ensure the timer displays 0 when finished
-        OnTimerEnd();
+        yield return null;
     }
+
+    UIManager.Instance.timerText.text = "0:00"; // Ensure it displays 0:00 when finished
+    OnTimerEnd();
+}
 
     // Called when the timer reaches 0 and the turn ends
     private void OnTimerEnd()
