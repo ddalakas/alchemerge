@@ -53,6 +53,15 @@ public class UIManager : MonoBehaviour
     public Image powerSource2ButtonImage;
     public string[] powerSourceChoices; // Used to store the current PowerSource options
 
+    // References to game objects
+    GameObject settingsManagerObj;
+    GameObject codexManagerObj;
+    GameObject soundManagerObj;
+
+    SettingsManager settingsManager;
+    CodexManager codexManager;
+    public SoundManager soundManager; // Reference to the SoundManager
+
     private void Awake()
     {
         if (Instance == null)
@@ -145,23 +154,27 @@ public class UIManager : MonoBehaviour
 
     public void AddPlayListeners() // Adds listeners to the buttons and executes the appropriate functions
     {
+
+        // Canvas References
         Canvas playerTurnCanvas = GameObject.Find("Player Turn Canvas").GetComponent<Canvas>();
         Canvas baseElementCanvas = GameObject.Find("Base Element Canvas").GetComponent<Canvas>();
         Canvas playCanvas = GameObject.Find("PlayCanvas").GetComponent<Canvas>();
         Canvas powerSourceSelectionCanvas = GameObject.Find("Power Source Selection Canvas").GetComponent<Canvas>();
+        
         if (powerSourceSelectionCanvas != null) Debug.Log("Power Source Selection Canvas found");
 
-        GameObject settingsManagerObj = GameObject.Find("SettingsManager");
-        GameObject codexManagerObj = GameObject.Find("CodexManager");
-        GameObject soundManagerObj = GameObject.Find("SoundManager");
+        
+        // References to managers
+        settingsManagerObj = GameObject.Find("SettingsManager");
+        codexManagerObj = GameObject.Find("CodexManager");
+        soundManagerObj = GameObject.Find("SoundManager");
+        
+        settingsManager = settingsManagerObj.GetComponent<SettingsManager>();
+        codexManager = codexManagerObj.GetComponent<CodexManager>();
+        soundManager = soundManagerObj.GetComponent<SoundManager>();
 
         if (soundManagerObj != null && settingsManagerObj != null)
         {
-
-            SettingsManager settingsManager = settingsManagerObj.GetComponent<SettingsManager>();
-            CodexManager codexManager = codexManagerObj.GetComponent<CodexManager>();
-            SoundManager soundManager = soundManagerObj.GetComponent<SoundManager>();
-
             // Settings Button
             settingsButton.onClick.AddListener(() =>
             {

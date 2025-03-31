@@ -6,7 +6,10 @@ using System.Collections;
 public class SceneTransition : MonoBehaviour
 {
     public Image fadeImage;
+
+    //public GameObject sceneManager; // Reference to the scene manager object
     public float fadeDuration = 2.0f; // two second fade duration
+
 
     private void Start()
     {

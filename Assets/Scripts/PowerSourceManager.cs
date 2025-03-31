@@ -11,23 +11,24 @@ public class PowerSourceManager : MonoBehaviour
 
     private void Awake()
     {
-        // Load PowerSource sprites into Power Source Sprite dictionary 
-        
+        // Load PowerSource sprites into Power Source Sprite dictionary
         foreach (Sprite sprite in powerSourceSprites)
         {
-            spriteDict.Add(sprite.name, sprite);
-        } 
-        
-        if (powerSourceList == null)
-        {
-            Debug.Log("PowerSourceList doesn't exist");
+            if (!spriteDict.ContainsKey(sprite.name)) // Check if the sprite is not already in the dictionary
+            {
+                spriteDict.Add(sprite.name, sprite);
+            }
         }
-        
+
         // Load PowerSource data into Power Source Data dictionary
         foreach (PowerSourceData ps in powerSourceList.PowerSources)
         {
-            powerSourceDict.Add(ps.powerSourceName, ps);
+            if (!powerSourceDict.ContainsKey(ps.powerSourceName)) // Check if the Power Source data is not already in the dictionary
+            {
+                powerSourceDict.Add(ps.powerSourceName, ps);
+            }
         }
+
     }
 
     public static Sprite GetPowerSourceSprite(string spriteName)

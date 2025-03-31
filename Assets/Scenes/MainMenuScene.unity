@@ -371,15 +371,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191847447}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4.9695554}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 927349883}
+  m_Father: {fileID: 1602192009}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 588.4421, y: -62.218124}
+  m_AnchoredPosition: {x: 0, y: -53}
   m_SizeDelta: {x: 1066.9688, y: 898.3048}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &191847449
@@ -984,6 +984,151 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9913a29b615b30e40bd973a18dc823d8, type: 3}
   - {fileID: 21300000, guid: de3122597743b514fbe46929e0b61e98, type: 3}
   - {fileID: 21300000, guid: fb4511f92fe294b408a31fe08516ad13, type: 3}
+--- !u!1 &429147494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 429147495}
+  - component: {fileID: 429147498}
+  - component: {fileID: 429147497}
+  - component: {fileID: 429147496}
+  m_Layer: 5
+  m_Name: BackToMainMenuButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &429147495
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429147494}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 774443786}
+  m_Father: {fileID: 1602192009}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -327}
+  m_SizeDelta: {x: 529.752, y: 198.355}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &429147496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429147494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 2
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: -6217210670721025320, guid: 9ca1efaf1b2f4a8448fd286b56efd2c5, type: 3}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 429147497}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 645111509}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 80320c68ef027464bbab0f7837bf73f2, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 593713694}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+        m_MethodName: LoadMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &429147497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429147494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -7713244118238812520, guid: 01375d9057fd9104db87b61827a671b8, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &429147498
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429147494}
+  m_CullTransparentMesh: 1
 --- !u!1 &435757619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1870,6 +2015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   codexEnableButton: {fileID: 1384179409}
+  backToMainMenuButton: {fileID: 429147496}
   codexStatusText: {fileID: 1797556901}
   settingsCanvas: {fileID: 1602192003}
 --- !u!4 &593713695
@@ -3216,81 +3362,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &751665172
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 751665173}
-  - component: {fileID: 751665175}
-  - component: {fileID: 751665174}
-  m_Layer: 5
-  m_Name: Player 1 Sprite
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &751665173
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 751665172}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 919591507}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -450, y: 350}
-  m_SizeDelta: {x: 155, y: 190}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &751665174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 751665172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 8334560802362323214, guid: 27fc06b183d602b4692b515706492800, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &751665175
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 751665172}
-  m_CullTransparentMesh: 1
 --- !u!1 &768417293
 GameObject:
   m_ObjectHideFlags: 0
@@ -3435,6 +3506,142 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768417293}
+  m_CullTransparentMesh: 1
+--- !u!1 &774443785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 774443786}
+  - component: {fileID: 774443788}
+  - component: {fileID: 774443787}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &774443786
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774443785}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 429147495}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 13, y: 10}
+  m_SizeDelta: {x: 423.5, y: 99.2111}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &774443787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774443785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "Back to \nMain Menu"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 7419f496a0b9e7e41953f278513beacb, type: 2}
+  m_sharedMaterial: {fileID: -5163478875841650227, guid: 7419f496a0b9e7e41953f278513beacb, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4282006074
+  m_fontColor: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 60
+  m_fontSizeBase: 60
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 4096
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 9.883179, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &774443788
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774443785}
   m_CullTransparentMesh: 1
 --- !u!1 &804863143
 GameObject:
@@ -3895,8 +4102,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 417014185}
-  - {fileID: 751665173}
-  - {fileID: 1736805479}
+  - {fileID: 1677420251}
+  - {fileID: 954412428}
   - {fileID: 601445931}
   - {fileID: 768417294}
   - {fileID: 1531361979}
@@ -4033,10 +4240,119 @@ Transform:
   m_LocalPosition: {x: -569.0464, y: 8.690613, z: -4.9695554}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 191847448}
+  m_Children: []
   m_Father: {fileID: 1602192009}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &954412427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 954412428}
+  - component: {fileID: 954412430}
+  - component: {fileID: 954412429}
+  m_Layer: 0
+  m_Name: Player 2 Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &954412428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954412427}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 446, y: 374, z: 0}
+  m_LocalScale: {x: 30, y: 30, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919591507}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &954412429
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954412427}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1df07309ab660424fb66f065bb0a3cf5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &954412430
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954412427}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 21300000, guid: cd41bf112ed221f4b961857f3f35f28c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 10.24, y: 10.24}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1031915945
 GameObject:
   m_ObjectHideFlags: 0
@@ -5356,16 +5672,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401681667}
   m_LocalRotation: {x: -0, y: 0.008727774, z: -0, w: 0.9999619}
-  m_LocalPosition: {x: 0, y: 0, z: 13}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1602192009}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 963, y: -97}
-  m_SizeDelta: {x: 328.6713, y: 108.7041}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -97}
+  m_SizeDelta: {x: 328.67126, y: 108.7041}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1401681669
 MonoBehaviour:
@@ -6471,9 +6787,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 191847448}
   - {fileID: 927349883}
   - {fileID: 1401681668}
   - {fileID: 1536333340}
+  - {fileID: 429147495}
   - {fileID: 1384179408}
   - {fileID: 22611819}
   - {fileID: 693795565}
@@ -6763,6 +7081,116 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654283950}
   m_CullTransparentMesh: 1
+--- !u!1 &1677420250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1677420251}
+  - component: {fileID: 1677420253}
+  - component: {fileID: 1677420252}
+  m_Layer: 0
+  m_Name: Player 1 Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1677420251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677420250}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -439, y: 367, z: 0}
+  m_LocalScale: {x: 30, y: 30, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 919591507}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1677420252
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677420250}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 76023d32b97b9464abc9aa3c5e15940b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &1677420253
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677420250}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 21300000, guid: d375e6627ddfdf94d892f16c015c1d5a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 10.24, y: 10.24}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1698643001
 GameObject:
   m_ObjectHideFlags: 0
@@ -9174,81 +9602,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1736805478
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1736805479}
-  - component: {fileID: 1736805481}
-  - component: {fileID: 1736805480}
-  m_Layer: 5
-  m_Name: Player 2 Sprite
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1736805479
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1736805478}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 919591507}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 450, y: 350}
-  m_SizeDelta: {x: 155, y: 190}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1736805480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1736805478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 6535321874179038596, guid: 7e6573e654e93c94897618f6bdc010b8, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1736805481
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1736805478}
-  m_CullTransparentMesh: 1
 --- !u!1 &1772833249
 GameObject:
   m_ObjectHideFlags: 0
@@ -11245,49 +11598,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rulesText: {fileID: 1417816407}
-  rulesContent: "<b>Core Gameplay</b>\r\n\r\nEach player has three statistics: <b>Attack</b>,
-    <b>Defence</b>, and <b>Health</b>. At the start of the game:  \r\n\u2022 Attack:
-    <b>0</b>  \r\n\u2022 Defence: <b>0</b>  \r\n\u2022 Health: <b>50</b>  \r\n\r\nA
-    player improves these statistics by playing <b>Power Sources</b> onto the <b>Playing
-    Field</b>. The main objective is to reduce the opponent\u2019s Health to <b>zero</b>. 
-    \r\nThere are <i>two</i> alternative win conditions, detailed under the <b>Winning
-    Conditions</b> section.  \r\n\r\n<b>Game Start</b>  \r\n\u2022 Each player selects
-    a base <b>Primal Element</b>.  \r\n\u2022 A player\u2019s Primal Element applies
-    a <b>1.25x multiplier</b> to any Power Source of the same type.  \r\n\r\n<b>Play
-    Phase</b>  \r\n1. The first player chooses from <b>two randomly generated Power
-    Sources</b>.  \r\n2. The chosen Power Source can be stored in the player\u2019s
-    <b>Satchel</b> or played onto the <b>Playing Field</b>.  \r\n3. If played, the
-    Power Source is marked as <b>Active</b>.  \r\n4. The device is passed to the
-    second player, who repeats the process.  \r\n5. The second player has <b>no knowledge</b>
-    of the first player\u2019s move.  \r\n6. Each player must commit their move within
-    <b>60 seconds</b>.  \r\n\r\n<b>Combat Phase</b>  \r\n\u2022 Both players\u2019
-    <b>Active Power Sources</b> engage in combat.  \r\n\u2022 If an Active Power
-    Source is <i>strong</i> against the opponent\u2019s, it gains a <b>1.5x multiplier</b>. 
-    \r\n\u2022 This buff applies to <b>Attack, Defence, and Health</b> only during
-    combat.  \r\n\u2022 <b>Overcharge Health</b> is granted if the buff increases
-    Health. This extra health acts as a temporary buffer but disappears after combat. 
-    \r\n\u2022 A player\u2019s Attack is subtracted from the opponent\u2019s Defence.
-    If Attack exceeds Defence, the remaining damage is dealt to the opponent\u2019s
-    Health.  \r\n\u2022 If a player\u2019s Health reaches <b>zero</b>, they lose
-    the game.  \r\n\r\n<b>Fusions</b>  \r\n\u2022 Players can merge two Power Sources
-    on the <b>Playing Field</b> to create a <b>Fusion</b>.  \r\n\u2022 Once a Fusion
-    is created, it may appear as an option at the start of a turn.  \r\n\u2022 Fusion
-    probability is lower than standard Primal Elements.  \r\n\r\n<b>Fusion Tiers</b> 
-    \r\n\u2022 <b>Tier 1:</b> Two Primal Elements  \r\n\u2022 <b>Tier 2:</b> A Tier
-    1 Fusion + a Primal Element  \r\n\u2022 <b>Tier 3:</b> Two Tier 1 Fusions  \r\n\r\n<b>Playing
-    Field</b>  \r\n\u2022 Two halves, one for each player.  \r\n\u2022 Each half
-    contains <b>five slots</b> for Power Sources.  \r\n\r\n<b>Satchel</b>  \r\n\u2022
-    Players can store up to <b>four</b> Power Sources.  \r\n\u2022 If full, the player
-    cannot receive new Power Sources.  \r\n\r\n<b>Player Rules</b>  \r\n<i>A player
-    must:</i>  \r\n\u2022 Select a base Primal Element at the start.  \r\n\u2022
-    Choose one of two randomly generated Power Sources each turn.  \r\n\u2022 Select
-    the Primal Element that a Fusion inherits from.  \r\n\u2022 Commit their move
-    within <b>60 seconds</b>.  \r\n\r\n<i>A player may:</i>  \r\n\u2022 Create any
-    number of Fusions per round.  \r\n\u2022 Choose not to play or merge a Power
-    Source during their turn.  \r\n\r\n<b>Winning Conditions</b>  \r\n1. Reduce the
-    opponent\u2019s Health to <b>zero</b>.  \r\n2. Have <b>three Tier 3 Fusions</b>
-    on the Playing Field.  \r\n3. Have <b>two Tier 3 Fusions and two Tier 2 Fusions</b>
-    on the Playing Field.  \r\n"
+  rulesContent: "<b>Core Gameplay</b>\r\n\r\nEach player has three statistics:\r\n\u2022
+    Attack: <color=red>0</color>\r\n\u2022 Defence: <color=blue>0</color>\r\n\u2022
+    Health: <color=green>50</color>\r\n\r\nA player improves these statistics by
+    playing Power Sources onto the Playing Field.  \r\nThe main objective is to reduce
+    the opponent\u2019s Health to zero.\r\n\r\nThere are also two alternative win
+    conditions, detailed under the <b>Winning Conditions</b> section.\r\n\r\n<b>Game
+    Start</b>\r\n\u2022 Each player selects a base Primal Element.  \r\n\u2022 A
+    player\u2019s Primal Element applies a <color=green>1.25x</color> multiplier
+    to any Power Source of the same type.\r\n\r\n<b>Play Phase</b>\r\n\u2022 The
+    first player chooses from two randomly generated Power Sources.  \r\n\u2022 The
+    chosen Power Source can be stored in the player\u2019s Satchel or played onto
+    the Playing Field.  \r\n\u2022 If played, the Power Source becomes <color=yellow>Active</color>. 
+    \r\n\u2022 The device is passed to the second player, who repeats the process. 
+    \r\n\u2022 The second player has <color=blue>no knowledge</color> of the first
+    player\u2019s move.  \r\n\u2022 Each player must commit their move within <color=#808080>60
+    seconds</color>.\r\n\r\n<b>Combat Phase</b>\r\n\u2022 Both players\u2019 Active
+    Power Sources engage in combat.  \r\n\u2022 If an Active Power Source is strong
+    against the opponent\u2019s, it gains a <color=red>1.5x</color> multiplier (this
+    buff applies to Attack, Defence, and Health only during combat).  \r\n\u2022
+    Overcharge Health is granted if the buff increases Health. This extra health
+    acts as a temporary buffer but disappears after combat.  \r\n\u2022 A player\u2019s
+    Attack is subtracted from the opponent\u2019s Defence.  \r\n\u2022 If Attack
+    exceeds Defence, the remaining damage is dealt to the opponent\u2019s Health. 
+    \r\n\u2022 If a player\u2019s Health reaches <color=black>zero</color>, they
+    lose the game.\r\n\r\n<b>Fusions</b>\r\n\u2022 Players can merge two Power Sources
+    on the Playing Field to create a Fusion.  \r\n\u2022 Once a Fusion is created,
+    it may appear as an option at the start of a turn.  \r\n\u2022 Fusion probability
+    is lower than that of standard Primal Elements.\r\n\r\n<b>Fusion Tiers</b>\r\n\u2022
+    <color=green>Tier 1:</color> Two Primal Elements  \r\n\u2022 <color=blue>Tier
+    2:</color> A Tier 1 Fusion + a Primal Element  \r\n\u2022 <color=purple>Tier
+    3:</color> Two Tier 1 Fusions\r\n\r\n<b>Playing Field</b>\r\n\u2022 Two halves,
+    one for each player.  \r\n\u2022 Each half contains <color=orange>five slots</color>
+    for Power Sources.\r\n\r\n<b>Satchel</b>\r\n\u2022 Players can store up to <color=cyan>four
+    Power Sources</color>.  \r\n\u2022 If full, the player cannot receive new Power
+    Sources.\r\n\r\n<b>Player Rules</b>\r\nA player must:  \r\n\u2022 Select a base
+    Primal Element at the start.  \r\n\u2022 Choose one of two randomly generated
+    Power Sources each turn.  \r\n\u2022 Select the Primal Element that a Fusion
+    inherits from.  \r\n\u2022 Commit their move within 60 seconds.\r\n\r\nA player
+    may:  \r\n\u2022 Create any number of Fusions per round.  \r\n\u2022 Choose not
+    to play or merge a Power Source during their turn.\r\n\r\n<b>Winning Conditions</b>\r\nA
+    player wins if they achieve one of the following:\r\n1) Reduce the opponent\u2019s
+    Health to <color=black>zero</color>.  \r\n2) Have <color=purple>three Tier 3
+    Fusions</color> on the Playing Field.  \r\n3) Have <color=blue>two Tier 3 Fusions</color>
+    and <color=green>two Tier 2 Fusions</color> on the Playing Field.\r\n"
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
