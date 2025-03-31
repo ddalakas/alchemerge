@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class    UIManager : MonoBehaviour
 {
     public static UIManager Instance; // Singleton pattern ensuring only one instance with public access
 
@@ -52,6 +52,10 @@ public class UIManager : MonoBehaviour
     public Button powerSource2Button;
     public Image powerSource2ButtonImage;
     public string[] powerSourceChoices; // Used to store the current PowerSource options
+
+    // Timer UI
+    public TextMeshProUGUI timerText; // Timer text
+
 
     // References to game objects
     GameObject settingsManagerObj;
@@ -180,8 +184,17 @@ public class UIManager : MonoBehaviour
             {
                 soundManager.PlaySFX(SoundManager.instance.buttonClickSFX); // Play button click SFX
                 settingsManager.ToggleSettings(); // Show settings canvas
+                TurnManager.Instance.ToggleTimer(); // Pause the turn timer
             }
             );
+
+            // Back Button
+            settingsManager.backButton.onClick.AddListener(() =>
+            {
+                TurnManager.Instance.ToggleTimer(); // Resume the turn timer
+            }
+            );
+
             // Codex Button
             codexButton.onClick.AddListener(() =>
             {
@@ -277,6 +290,7 @@ public class UIManager : MonoBehaviour
                 powerSourceSelectionCanvas.enabled = false; // Hide Power Source Selection Canvas
 
                 playCanvas.enabled = true; // Show Play Canvas
+                TurnManager.Instance.StartTurnTimer(); // Start the timer
             });
             powerSource2Button.onClick.AddListener(() =>
             {
@@ -289,6 +303,7 @@ public class UIManager : MonoBehaviour
                 powerSourceSelectionCanvas.enabled = false; // Hide Power Source Selection Canvas
 
                 playCanvas.enabled = true; // Show Play Canvas
+                TurnManager.Instance.StartTurnTimer(); // Start the timer
             });
         }
     }

@@ -2016,6 +2016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   codexEnableButton: {fileID: 1384179409}
   backToMainMenuButton: {fileID: 429147496}
+  backButton: {fileID: 2031613552}
   codexStatusText: {fileID: 1797556901}
   settingsCanvas: {fileID: 1602192003}
 --- !u!4 &593713695
@@ -6673,7 +6674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1602192004
 MonoBehaviour:
   m_ObjectHideFlags: 0
