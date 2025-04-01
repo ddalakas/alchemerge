@@ -3,18 +3,16 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class CodexManager : MonoBehaviour
-{   
+{
 
-     public static CodexManager Instance;
+    public static CodexManager Instance;
 
     [Header("Prefabs & UI References")]
     public GameObject codexEntryPrefab; // reference to prefab
     public Transform codexContentParent;
-
-
     public GameObject codexCanvas;
 
-    
+
     void Awake()
     {
         if (Instance == null)   // Singleton pattern
@@ -26,6 +24,7 @@ public class CodexManager : MonoBehaviour
         }
         else
         {
+            Destroy(gameObject); // Prevent duplicates
             Destroy(codexCanvas); // Prevent duplicates
         }
     }
@@ -35,18 +34,18 @@ public class CodexManager : MonoBehaviour
     }
 
     void PopulateCodex()
-    {   
+    {
         // Loop through every recipe from the list in FusionMergeController
         foreach (var recipe in FusionMergeController.Instance.recipes)
         {
             // Instantiate a new Codex entry prefab
             Debug.Log(recipe.powerSourceAName + " + " + recipe.powerSourceBName + " = " + recipe.mergeResultName);
-            GameObject entry = Instantiate(codexEntryPrefab, codexContentParent);   
+            GameObject entry = Instantiate(codexEntryPrefab, codexContentParent);
 
             // Get the CodexEntry component from the prefab
             CodexEntry codexEntry = entry.GetComponent<CodexEntry>();
             if (codexEntry != null)
-            {   
+            {
                 // Get icons for each Power Source
                 Sprite spriteA = PowerSourceManager.GetPowerSourceSprite(recipe.powerSourceAName); // get sprite A from dictionary
                 Sprite spriteB = PowerSourceManager.GetPowerSourceSprite(recipe.powerSourceBName); // get sprite B from dictionary
@@ -67,6 +66,6 @@ public class CodexManager : MonoBehaviour
         codexCanvas.SetActive(!codexCanvas.activeSelf);
     }
 
-    
+
 
 }

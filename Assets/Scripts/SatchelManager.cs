@@ -62,12 +62,10 @@ public class SatchelManager : MonoBehaviour
         if (TurnManager.isPlayer1Turn)
         {
             player1SatchelPowerSources[i] = ps; // Store the PowerSource in the Player 1 Satchel array
-            Debug.LogWarning("PowerSource placed in Player 1 Satchel.");
         }
         else
         {
             player2SatchelPowerSources[i] = ps; // Store the PowerSource in the Player 2 Satchel array
-            Debug.LogWarning("PowerSource placed in Player 2 Satchel.");
         }
 
         // Set properties
@@ -79,8 +77,24 @@ public class SatchelManager : MonoBehaviour
         ps.powerSourceImage = newPowerSource.GetComponent<Image>(); // Get and set the Image component of the PowerSource
         ps.powerSourceImage.sprite = PowerSourceManager.GetPowerSourceSprite(data.powerSourceName); // Set sprite based on PowerSource name
 
-        if (data.powerSourceName == "Wind")
+        // Set the element type based on PowerSource name
+        if (data.powerSourceName == "Fire")
         {
+            ps.elementType = Player.element.Fire;
+            ps.powerSourceImage.rectTransform.sizeDelta = new Vector2(95, 95); // Adjust to 95% of the original size
+        }
+        else if (data.powerSourceName == "Water")
+        {
+            ps.elementType = Player.element.Water;
+        }
+        else if (data.powerSourceName == "Earth")
+        {
+            ps.elementType = Player.element.Earth;
+            ps.powerSourceImage.rectTransform.sizeDelta = new Vector2(95, 95); // Adjust to 95% of the original size
+        }
+        else if (data.powerSourceName == "Wind")
+        {
+            ps.elementType = Player.element.Wind;
             // Shrink the Wind icon to fit the slot
             ps.powerSourceImage.rectTransform.sizeDelta = new Vector2(95, 95); // Adjust to 95% of the original size
         }

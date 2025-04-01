@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 
 public class SettingsManager : MonoBehaviour
-{   
+{
 
     public static SettingsManager Instance; // Singleton pattern
 
@@ -20,7 +20,7 @@ public class SettingsManager : MonoBehaviour
     private bool isCodexEnabled = true; // Default to enabled
 
 
-    void Awake()    
+    void Awake()
     {
         if (Instance == null) // Singleton pattern
         {
@@ -30,22 +30,23 @@ public class SettingsManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject); // Destroy duplicate settings manager
+            Destroy(settingsCanvas); // Destroy duplicate settings canvas
         }
     }
 
     void Start()
-    {   
+    {
         // Add a on-click listener to the button
         if (codexEnableButton != null)
         {
             codexEnableButton.onClick.AddListener(OnCodexEnableButtonClicked);
         }
-        
+
     }
 
-        private void OnCodexEnableButtonClicked()
-    {   
+    private void OnCodexEnableButtonClicked()
+    {
         // Toggle the codex boolean and update the button text
         ToggleCodexEnabled();
     }
@@ -68,7 +69,7 @@ public class SettingsManager : MonoBehaviour
         return isCodexEnabled;
     }
 
-    
+
     public void ToggleSettings()
     {
         // Toggle the settings menu
@@ -86,20 +87,20 @@ public class SettingsManager : MonoBehaviour
             {
                 backToMainMenuButton.gameObject.SetActive(true); // Show the button
             }
-        } 
+        }
     }
 
     public void LoadMainMenu()
-    {   
+    {
         Debug.Log("Loading Main Menu");
         ToggleSettings(); // Close the settings menu if it's open
         UIManager.Instance.soundManager.audioSource.Stop(); // Stop the current music
         UIManager.Instance.soundManager.audioSource.volume = 0.0f; // Set the volume to 0%
 
         SceneTransition sceneTransition = FindAnyObjectByType<SceneTransition>(); // Find the SceneTransition component
-        sceneTransition.ChangeScene("MainMenuScene"); // Change the scene to Main Menu Scene
+        sceneTransition.ChangeScene("MainMenuScene", false, false); // Change the scene to Main Menu Scene with no additive load
         GameManager.instance.ChangeGameState(GameManager.GameState.MainMenu); // Change the game state to Main Menu
     }
 }
 
- 
+

@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -26,6 +28,7 @@ public class UIManager : MonoBehaviour
     // Play Phase UI
     public Button settingsButton;
     public Button commitButton;
+    public bool commitClickedBefore = false; // Tracks if the commit button has been clicked before
     public Button codexButton;
 
     public Image bottomBaseElementImage; // Image for the current player's base element
@@ -62,10 +65,15 @@ public class UIManager : MonoBehaviour
     CodexManager codexManager;
     public SoundManager soundManager; // Reference to the SoundManager
 
+    public GameObject playGrid; // Find the Play Grid object
+
     private void Awake()
     {
         if (Instance == null)
+        {
             Instance = this; // Set the instance to this object
+            playGrid = GameObject.Find("PlayGrid");
+        }
         else
             Destroy(gameObject); // Destroy the object the script is attached to
     }
@@ -161,8 +169,9 @@ public class UIManager : MonoBehaviour
         Canvas playCanvas = GameObject.Find("PlayCanvas").GetComponent<Canvas>();
         Canvas powerSourceSelectionCanvas = GameObject.Find("Power Source Selection Canvas").GetComponent<Canvas>();
 
-        if (powerSourceSelectionCanvas != null) Debug.Log("Power Source Selection Canvas found");
+        GameObject playGrid = GameObject.Find("PlayGrid"); // Find the Play Grid object
 
+        if (powerSourceSelectionCanvas != null) Debug.Log("Power Source Selection Canvas found");
 
         // References to managers
         settingsManagerObj = GameObject.Find("SettingsManager");
@@ -190,23 +199,39 @@ public class UIManager : MonoBehaviour
             }
             );
 
+            SceneTransition sceneTransition = FindAnyObjectByType<SceneTransition>(); // Find the SceneTransition component
+
             // Commit Button
             commitButton.onClick.AddListener(() =>
             {
                 soundManager.PlaySFX(SoundManager.instance.buttonClickSFX);
-                TurnManager.SwitchTurn(); // Switch turn
-                Debug.Log("It is now " + (TurnManager.isPlayer1Turn ? "Player 1's" : "Player 2's") + " turn.");
 
-                UpdatePlayerTurnText(); // Update the player turn text
-                SwitchPlayHUD(); // Switch the HUD between Player1 and Player2
+                if (commitClickedBefore) // Player 2 clicked the commit button
+                {
+                    commitClickedBefore = false; // Reset the clicked state
+                    if (!(PlayerManager.player1.activePowerSource == null && PlayerManager.player2.activePowerSource == null))
+                    {
+                        StartCoroutine(DisableAndUpdatePlayViewWithDelay(2f, playCanvas, playerTurnCanvas, baseElementCanvas, powerSourceSelectionCanvas, playGrid)); // Disable the Play View after 2 seconds
+                        sceneTransition.ChangeScene("CombatScene", true, false); // Change the scene to Combat Phase with additive load
 
-                PowerSource temp = FindAnyObjectByType<PowerSource>(); // Find a PowerSource object
-                temp.nameText.text = ""; // Clear the PowerSource name text
-
-                PlayingFieldManager.Instance.FlipPlayingField(); // Flip the playing field
-
-                playCanvas.enabled = false; // Hide Play Canvas
-                playerTurnCanvas.enabled = true;   // Show Player Turn Canvas
+                        Scene combatScene = SceneManager.GetSceneByName("CombatScene");
+                        if (combatScene.IsValid())
+                        {
+                            SceneManager.SetActiveScene(combatScene); // Set the active scene to Combat Scene
+                        }
+                        GameManager.instance.ChangeGameState(GameManager.GameState.CombatPhase); // Change the game state to Combat Phase
+                    }
+                    else
+                    {
+                        UpdatePlayerView(playCanvas, playerTurnCanvas); // Update the playing field view
+                    }
+                }
+                else
+                {
+                    // Player 1 clicked the commit button
+                    commitClickedBefore = true; // Set the clicked state
+                    UpdatePlayerView(playCanvas, playerTurnCanvas); // Update the playing field view
+                }
             }
             );
 
@@ -313,16 +338,47 @@ public class UIManager : MonoBehaviour
 
     public void GetPowerSourceOptions() // Get PowerSource options for the current player
     {
-        if (TurnManager.isPlayer1Turn)
-        {
-            powerSourceChoices = PowerSourceGenerator.GeneratePowerSources(PlayerManager.player1); // Generate PowerSources for Player 1
-        }
-        else
-        {
-            powerSourceChoices = PowerSourceGenerator.GeneratePowerSources(PlayerManager.player2); // Generate PowerSources for Player 2
-        }
+        powerSourceChoices = PowerSourceGenerator.GeneratePowerSources(); // Generate PowerSources for Player 1
         powerSource1ButtonImage.sprite = PowerSourceManager.GetPowerSourceSprite(powerSourceChoices[0]); // Set PowerSource 1 sprite
         powerSource2ButtonImage.sprite = PowerSourceManager.GetPowerSourceSprite(powerSourceChoices[1]); // Set PowerSource 2 sprite
     }
 
+    public void UpdatePlayerView(Canvas playCanvas, Canvas playerTurnCanvas)
+    {
+        PlayingFieldManager.Instance.FlipPlayingField(); // Flip the playing field
+        TurnManager.SwitchTurn(); // Switch turn
+        Debug.Log("It is now " + (TurnManager.isPlayer1Turn ? "Player 1's" : "Player 2's") + " turn.");
+
+        UpdatePlayerTurnText(); // Update the player turn text
+        SwitchPlayHUD(); // Switch the HUD between Player1 and Player2
+
+        PowerSource temp = FindAnyObjectByType<PowerSource>(); // Find a PowerSource object
+        temp.nameText.text = ""; // Clear the PowerSource name text
+        playCanvas.enabled = false; // Hide Play Canvas
+        playerTurnCanvas.enabled = true;   // Show Player Turn Canvas
+    }
+
+    public IEnumerator DisableAndUpdatePlayViewWithDelay(float seconds, Canvas playCanvas,
+    Canvas playerTurnCanvas, Canvas baseElementCanvas, Canvas powerSourceSelectionCanvas, GameObject playGrid) // Wait for a specified number of seconds
+    {
+        yield return new WaitForSeconds(seconds);
+        UpdatePlayerView(playCanvas, playerTurnCanvas); // Update the player view
+        playCanvas.enabled = false; // Hide Play Canvas
+        playerTurnCanvas.enabled = false; // Hide Player Turn Canvas
+        baseElementCanvas.enabled = false; // Hide Base Element Picker
+        powerSourceSelectionCanvas.enabled = false; // Hide Power Source Selection Canvas
+        playGrid.SetActive(false); // Hide the grid 
+    }
+
+    public void EnablePlayView(Canvas playCanvas, Canvas playerTurnCanvas, Canvas baseElementCanvas, Canvas powerSourceSelectionCanvas, GameObject playGrid) // Enable the Play View
+    {
+        UpdateBottomRightHUD("Player 1", PlayerManager.player1.health, PlayerManager.player1.attack, PlayerManager.player1.defence, bottomRightSprite.sprite);
+        UpdateTopLeftHUD("Player 2", PlayerManager.player2.health, PlayerManager.player2.attack, PlayerManager.player2.defence, topLeftSprite.sprite);
+
+        playCanvas.enabled = true; // Show Play Canvas
+        playerTurnCanvas.enabled = true; // Hide Player Turn Canvas
+        baseElementCanvas.enabled = false; // Hide Base Element Picker
+        powerSourceSelectionCanvas.enabled = false; // Hide Power Source Selection Canvas
+        playGrid.SetActive(true); // Show the grid
+    }
 }

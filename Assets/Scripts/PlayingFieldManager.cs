@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 public class PlayingFieldManager : MonoBehaviour
@@ -95,7 +96,7 @@ public class PlayingFieldManager : MonoBehaviour
     // Sums the stats of all PowerSources on the Playing Field and updates the player's stats (if it's their turn)
     public void SumPowerSourceStats()
     {
-        float multiplier; // multiplier
+        float multiplier = 1.25f; // multiplier for the same element type
         if (TurnManager.isPlayer1Turn)
         {
             int player1Attack = 0;
@@ -107,24 +108,32 @@ public class PlayingFieldManager : MonoBehaviour
                 if (powerSources[i] != null)
                 {
                     // Check if the PowerSource is of the same element as the player's base element
-                    if (powerSources[i].powerSourceData.powerSourceName == PlayerManager.player1.baseElement.ToString())
+                    if (powerSources[i].elementType == PlayerManager.player1.baseElement)
                     {
-                        multiplier = 1.25f; // Increase stats by 25% if the PowerSource matches the player's base element
-                        player1Attack += (int)(powerSources[i].powerSourceData.attack * multiplier);
-                        player1Defence += (int)(powerSources[i].powerSourceData.defence * multiplier);
-                        player1Overhealth += (int)(powerSources[i].powerSourceData.health * multiplier);
+                        player1Attack += (int)Math.Round(powerSources[i].powerSourceData.attack * multiplier);
+                        player1Defence += (int)Math.Round(powerSources[i].powerSourceData.defence * multiplier);
+                        if (powerSources[i].newlyPlaced)
+                        {
+                            player1Overhealth += (int)Math.Round(powerSources[i].powerSourceData.health * multiplier);
+                            powerSources[i].newlyPlaced = false;
+                        }
                     }
                     else
                     {
                         player1Attack += powerSources[i].powerSourceData.attack;
                         player1Defence += powerSources[i].powerSourceData.defence;
-                        player1Overhealth += powerSources[i].powerSourceData.health;
+                        if (powerSources[i].newlyPlaced)
+                        {
+                            player1Overhealth += (int)Math.Round(powerSources[i].powerSourceData.health * 1.0f);
+                            powerSources[i].newlyPlaced = false;
+                        }
                     }
                 }
             }
             PlayerManager.player1.attack = player1Attack;
             PlayerManager.player1.defence = player1Defence;
-            PlayerManager.player1.health = PlayerManager.player1.baseHealth + player1Overhealth; // Update health based on base health and overhealth
+            PlayerManager.player1.overhealth += player1Overhealth; // Update overhealth
+            PlayerManager.player1.health = PlayerManager.player1.baseHealth + PlayerManager.player1.overhealth; // Update health based on base health and overhealth
         }
         else
         {
@@ -137,24 +146,32 @@ public class PlayingFieldManager : MonoBehaviour
                 if (powerSources[i] != null)
                 {
                     // Check if the PowerSource is of the same element as the player's base element
-                    if (powerSources[i].powerSourceData.powerSourceName == PlayerManager.player2.baseElement.ToString())
+                    if (powerSources[i].elementType == PlayerManager.player2.baseElement)
                     {
-                        multiplier = 1.25f; // Increase stats by 25% if the PowerSource matches the player's base element
-                        player2Attack += (int)(powerSources[i].powerSourceData.attack * multiplier);
-                        player2Defence += (int)(powerSources[i].powerSourceData.defence * multiplier);
-                        player2Overhealth += (int)(powerSources[i].powerSourceData.health * multiplier);
+                        player2Attack += (int)Math.Round(powerSources[i].powerSourceData.attack * multiplier);
+                        player2Defence += (int)Math.Round(powerSources[i].powerSourceData.defence * multiplier);
+                        if (powerSources[i].newlyPlaced)
+                        {
+                            player2Overhealth += (int)Math.Round(powerSources[i].powerSourceData.health * multiplier);
+                            powerSources[i].newlyPlaced = false;
+                        }
                     }
                     else
                     {
                         player2Attack += powerSources[i].powerSourceData.attack;
                         player2Defence += powerSources[i].powerSourceData.defence;
-                        player2Overhealth += powerSources[i].powerSourceData.health;
+                        if (powerSources[i].newlyPlaced)
+                        {
+                            player2Overhealth += (int)Math.Round(powerSources[i].powerSourceData.health * 1.0f);
+                            powerSources[i].newlyPlaced = false;
+                        }
                     }
                 }
             }
             PlayerManager.player2.attack = player2Attack;
             PlayerManager.player2.defence = player2Defence;
-            PlayerManager.player2.health = PlayerManager.player2.baseHealth + player2Overhealth; // Update health based on base health and overhealth
+            PlayerManager.player2.overhealth += player2Overhealth; // Update overhealth
+            PlayerManager.player2.health = PlayerManager.player2.baseHealth + PlayerManager.player2.overhealth; // Update health based on base health and overhealth
         }
     }
 
@@ -225,7 +242,6 @@ public class PlayingFieldManager : MonoBehaviour
         fusion.powerSourceData.health = data.health;
 
         fusion.powerSourceImage = newFusionObj.GetComponent<Image>();
-
         fusion.powerSourceImage.sprite = fusionSprite; // Set Fusion sprite
 
         RectTransform rectTransform = fusion.GetComponent<RectTransform>();
@@ -234,6 +250,9 @@ public class PlayingFieldManager : MonoBehaviour
 
         // Initialize with required references to canvas and text object
         fusion.Initialize(SatchelManager.Instance.mainCanvas, SatchelManager.Instance.nameText);
+
+        fusion.elementType = powerSourceB.elementType; // Set the element type of the Fusion PowerSource to match PowerSource B (the one being dragged onto)
+        Debug.Log("Fusion Element Type: " + fusion.elementType);
 
         // Remove PowerSource A and B from the playing field and satchel
 

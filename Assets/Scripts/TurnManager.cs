@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour
 {
@@ -39,15 +38,11 @@ public class TurnManager : MonoBehaviour
                     {
                         Debug.Log("Interactable for slot" + i + ":" + (i < 5));
                         PlayingFieldManager.Instance.powerSources[i].isDraggable = i < 5; // Enable Player 1's PowerSources
-                        //canvasGroup.interactable = i < 5; // Enable Player 1's PowerSources
-                        //canvasGroup.blocksRaycasts = i < 5;
                     }
                     else
                     {
                         Debug.Log("Interactable for slot" + i + ":" + (i >= 5));
                         PlayingFieldManager.Instance.powerSources[i].isDraggable = i >= 5; // Enable Player 2's PowerSources
-                        //canvasGroup.interactable = i >= 5; // Enable Player 2's PowerSources
-                        //canvasGroup.blocksRaycasts = i >= 5;
                     }
                 }
             }

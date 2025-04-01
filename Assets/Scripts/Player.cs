@@ -7,14 +7,13 @@ public class Player
     public int baseHealth; // Player's base health stat
     public int overhealth = 0; // Player's overhealth stat
 
+    public int combatHealth; // Player's health is gained from a buff during combat
+
     public enum element { Earth, Fire, Water, Wind };
     public element baseElement;
     public string spriteName;
-
     public PowerSource activePowerSource; // Active PowerSource
     public bool gotBuffed = false; // Buffed stat
-
-    public string[] unlockedPowerSources = new string[37]; // Array of unlocked PowerSource names
 
     public Player(int attack, int defence, int baseHealth)
     {
@@ -22,11 +21,5 @@ public class Player
         this.defence = defence;
         this.baseHealth = baseHealth;
         health = baseHealth; // Initialize health to base health
-
-        // Players start with all four Primal elements unlocked
-        unlockedPowerSources[0] = "Earth";
-        unlockedPowerSources[1] = "Fire";
-        unlockedPowerSources[2] = "Water";
-        unlockedPowerSources[3] = "Wind";
     }
 }

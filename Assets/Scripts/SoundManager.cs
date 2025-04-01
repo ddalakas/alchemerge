@@ -24,6 +24,8 @@ public class SoundManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            Destroy(audioSource); // Destroy duplicate AudioSource
+            Destroy(sfxSource); // Destroy duplicate AudioSource
         }
     }
 

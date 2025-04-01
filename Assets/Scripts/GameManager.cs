@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
                 SoundManager.instance.PlayMusic(SoundManager.instance.combatPhaseMusic);
                 break;
             case GameState.Victory:
-                SoundManager.instance.PlayMusic(SoundManager.instance.victoryMusic);
+                SoundManager.instance.PlaySFX(SoundManager.instance.victoryMusic);
                 break;
         }
     }
