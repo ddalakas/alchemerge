@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ca26fc1665b3c334e9815ffb44479f35
+guid: cfe9fb969849a294fbca7c3a8ad291cd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5475658624269708980
-    second: WaterAttack_0
+      213: 7028616704906629411
+    second: 7_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WaterAttack_0
+      name: 7_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 17
-        width: 67
-        height: 63
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4be66eae1827dfb40800000000000000
-      internalID: 5475658624269708980
+      spriteID: 321165667a9aa8160800000000000000
+      internalID: 7028616704906629411
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      WaterAttack_0: 5475658624269708980
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
