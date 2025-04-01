@@ -1,7 +1,6 @@
 using UnityEngine;
-using TMPro;
 using System.Collections;
-using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 
 
@@ -15,9 +14,6 @@ public class TurnManager : MonoBehaviour
     private float currentTime;          // Remaining time for the current turn
     private bool isPaused = false;      // Whether the timer is paused
     private Coroutine timerCoroutine;   // Reference to the active timer coroutine
-
-
-
 
     private void Awake()
     {
@@ -123,8 +119,33 @@ public class TurnManager : MonoBehaviour
     private void OnTimerEnd()
     {
         Debug.Log("Turn time ended. Executing end-of-turn logic.");
+        SceneTransition sceneTransition = FindAnyObjectByType<SceneTransition>(); // Find the SceneTransition component
 
-        //SwitchTurn();
+        // Canvas References
+        Canvas playerTurnCanvas = GameObject.Find("Player Turn Canvas").GetComponent<Canvas>();
+        Canvas baseElementCanvas = GameObject.Find("Base Element Canvas").GetComponent<Canvas>();
+        Canvas playCanvas = GameObject.Find("PlayCanvas").GetComponent<Canvas>();
+        Canvas powerSourceSelectionCanvas = GameObject.Find("Power Source Selection Canvas").GetComponent<Canvas>();
+
+        GameObject playGrid = GameObject.Find("PlayGrid"); // Find the Play Grid object
+
+
+        if (!(PlayerManager.player1.activePowerSource == null && PlayerManager.player2.activePowerSource == null))
+        {
+            StartCoroutine(UIManager.Instance.DisableAndUpdatePlayViewWithDelay(2f, playCanvas, playerTurnCanvas, baseElementCanvas, powerSourceSelectionCanvas, playGrid)); // Disable the Play View after 2 seconds
+            sceneTransition.ChangeScene("CombatScene", true, false); // Change the scene to Combat Phase with additive load
+
+            Scene combatScene = SceneManager.GetSceneByName("CombatScene");
+            if (combatScene.IsValid())
+            {
+                SceneManager.SetActiveScene(combatScene); // Set the active scene to Combat Scene
+            }
+            GameManager.instance.ChangeGameState(GameManager.GameState.CombatPhase); // Change the game state to Combat Phase
+        }
+        else
+        {
+            UIManager.Instance.UpdatePlayerView(playCanvas, playerTurnCanvas); // Update the playing field view
+        }
     }
 
     // Pause the timer when the settings menu is opened, resume when closed
@@ -132,5 +153,4 @@ public class TurnManager : MonoBehaviour
     {
         isPaused = !isPaused; // Toggle the pause state
     }
-
 }

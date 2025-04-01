@@ -39,7 +39,6 @@ public class VictoryManager : MonoBehaviour
 
     public void DisplayWinner(int playerNumber)
     {
-
         if (playerNumber == 1)
         {
             winnerText.text = "Player 1 Wins!";

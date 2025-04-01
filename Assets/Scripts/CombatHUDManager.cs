@@ -4,6 +4,7 @@ using TMPro;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using System;
+using Unity.VisualScripting;
 
 public class CombatHUDManager : MonoBehaviour
 {
@@ -76,11 +77,6 @@ public class CombatHUDManager : MonoBehaviour
     public IEnumerator UpdatePlayer1HUDAfterAnimation()
     {
         yield return new WaitForSeconds(7f); // Wait for 7 seconds before updating HUD
-
-        if (CheckWinner()) // Check for winner after attacks and then transition to victory screen
-        {
-            StartCoroutine(DeathAnimationDelay()); // Check for winner after attacks and then transition to victory screen
-        }
         UpdatePlayer1Stats(); // Update Player 1 HUD after the attack
     }
 
@@ -88,32 +84,29 @@ public class CombatHUDManager : MonoBehaviour
     {
 
         yield return new WaitForSeconds(7f); // Wait for 7 seconds before updating HUD
-
-        if (CheckWinner()) // Check for winner after attacks and then transition to victory screen
-        {
-            StartCoroutine(DeathAnimationDelay()); // Check for winner after attacks and then transition to victory screen
-        }
-
         UpdatePlayer2Stats(); // Update Player 2 HUD after the attack
-    }
-
-    public IEnumerator DeathAnimationDelay()
-    {
-
-        yield return new WaitForSeconds(3f); // Wait for 3 seconds before updating HUD
-        if (PlayerManager.player2.health <= 0) // Check if Player 2 is dead
-        {
-            VictoryManager.Instance.DisplayWinner(1); // Show Player 1 as the winner
-        }
-        else if (PlayerManager.player1.health <= 0) // Check if Player 1 is dead
-        {
-            VictoryManager.Instance.DisplayWinner(2); // Show Player 2 as the winner
-        }
     }
 
     public void CalculateCombatBuffs()
     {
-        if (PlayerManager.player1.activePowerSource.elementType == Player.element.Fire
+        if (PlayerManager.player1.activePowerSource == null && PlayerManager.player2.activePowerSource != null)
+        {
+            PlayerManager.player2.attack = (int)Math.Round(PlayerManager.player2.attack * combatMultiplier);
+            PlayerManager.player2.defence = (int)Math.Round(PlayerManager.player2.defence * combatMultiplier);
+            PlayerManager.player2.combatHealth = (int)Math.Round(PlayerManager.player2.health * (combatMultiplier - 1));
+            PlayerManager.player2.health += PlayerManager.player2.combatHealth; // Add combatHealth to Player 2's health
+            PlayerManager.player2.gotBuffed = true; // Set buffed status to true for Player 2
+        }
+        else if (PlayerManager.player2.activePowerSource == null && PlayerManager.player1.activePowerSource != null)
+        {
+            PlayerManager.player1.attack = (int)Math.Round(PlayerManager.player1.attack * combatMultiplier);
+            PlayerManager.player1.defence = (int)Math.Round(PlayerManager.player1.defence * combatMultiplier);
+            PlayerManager.player1.combatHealth = (int)Math.Round(PlayerManager.player1.health * (combatMultiplier - 1));
+            PlayerManager.player1.health += PlayerManager.player1.combatHealth; // Add combatHealth to Player 2's health
+            PlayerManager.player1.gotBuffed = true; // Set buffed status to true for Player 2
+        }
+
+        else if (PlayerManager.player1.activePowerSource.elementType == Player.element.Fire
          && PlayerManager.player2.activePowerSource.elementType == Player.element.Water) // water beats fire
         {
 
@@ -276,19 +269,22 @@ public class CombatHUDManager : MonoBehaviour
 
     IEnumerator PlayAndVictoryTransitionWait()
     {
-        yield return new WaitForSeconds(20f); // Wait for 20 seconds
+        yield return new WaitForSeconds(15f); // Wait for 14 seconds
 
         if (playerThatWon != 0) // Check if a player has won
         {
-            Debug.Log("Player has won, transitioning to victory screen");
+            Debug.LogError("Player has won, transitioning to victory screen");
             VictoryManager.Instance.DisplayWinner(playerThatWon); // Show the winner
 
             // Unload the Play Scene
+            Debug.LogWarning("Unloading Play Scene");
+
             Scene playScene = SceneManager.GetSceneByName("PlayScene"); // Get the Play Scene
             if (playScene.IsValid())
             {
                 SceneManager.UnloadSceneAsync(playScene); // Unload the Play Scene
             }
+
             playerThatWon = 0; // Reset player that won
         }
         else
