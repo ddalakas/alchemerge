@@ -41,10 +41,15 @@ public class PowerSource : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public bool isDraggable = true; // Determines if the PowerSource can be dragged
 
+    public Player.element elementType; // Type of the PowerSource (Earth, Fire, Water, Wind)
+
+    public bool newlyPlaced; // Indicates if the PowerSource is newly placed
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>(); // Get the RectTransform component of the PowerSource
         canvasGroup = GetComponent<CanvasGroup>();  // Get the CanvasGroup component of the PowerSource
+        newlyPlaced = true; // Set newlyPlaced to true by default
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -157,7 +162,6 @@ public class PowerSource : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                 int satchelSlotIndex = System.Array.IndexOf(SatchelManager.Instance.satchelSlots, satchelSlot);
                 if (satchelSlotIndex != -1) // ensure that this Power Source originated from the Satchel
                 {
-
                     if (TurnManager.isPlayer1Turn)
                     {
                         // Check if Player 2 has a PowerSource in the same slot
@@ -178,14 +182,23 @@ public class PowerSource : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                     }
                     satchelSlot = null; // Clear the Power Source's satchel slot reference
                 }
+                if (TurnManager.isPlayer1Turn)
+                {
+                    Debug.Log("PowerSource " + powerSourceData.powerSourceName + " became Player 1's Active PowerSource");
+                    PlayerManager.player1.activePowerSource = this; // Set the active PowerSource for Player 1
+                }
+                else
+                {
+                    Debug.Log("PowerSource " + powerSourceData.powerSourceName + " became Player 2's Active PowerSource");
+                    PlayerManager.player2.activePowerSource = this; // Set the active PowerSource for Player 2
+                }
             }
             Debug.Log("PowerSource was placed in the playing field at slot + " + slotIndex);
         }
         else
         {
             Debug.Log("No open slot found.");
-            bool mergeFound = PlayingFieldManager.Instance.GetValidMerge(transform.position, gameObject.GetComponent<PowerSource>()); // Check for fusion opportunities
-
+            bool mergeFound = PlayingFieldManager.Instance.GetValidMerge(transform.position, gameObject.GetComponent<PowerSource>()); // Check for fusions
             if (!mergeFound)
             {
                 // Return to original position if no valid slot
@@ -196,7 +209,7 @@ public class PowerSource : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
         // Calculate Player Stats
         PlayerManager.CalculatePlayerStats();
-        
+
         // Update the current player's stats on the screen
         if (TurnManager.isPlayer1Turn)
         {

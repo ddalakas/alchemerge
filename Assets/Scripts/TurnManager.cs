@@ -9,28 +9,29 @@ public class TurnManager : MonoBehaviour
 {
     public static TurnManager Instance; // Singleton instance
     public static bool isPlayer1Turn;   // Tracks whose turn it is
-    
+
     [Header("Timer Settings")]
     public float turnDuration = 58f;        // Duration of each turn in seconds
     private float currentTime;          // Remaining time for the current turn
     private bool isPaused = false;      // Whether the timer is paused
     private Coroutine timerCoroutine;   // Reference to the active timer coroutine
 
-    
+
 
 
     private void Awake()
     {
-        if (Instance == null){
+        if (Instance == null)
+        {
             Instance = this;
         }
-            
+
         else
             Destroy(gameObject);
     }
 
     private void Start()
-    {   
+    {
         isPlayer1Turn = true;          // Player 1 starts first
         DisableOpponentSlots();        // Setup slots for the first turn
     }
@@ -67,61 +68,62 @@ public class TurnManager : MonoBehaviour
     // Start the timer for the turn
     public void StartTurnTimer()
     {
-        if (timerCoroutine != null){
+        if (timerCoroutine != null)
+        {
 
             StopCoroutine(timerCoroutine);
         }
-           
+
         currentTime = turnDuration; // Reset the timer to the full duration
         timerCoroutine = StartCoroutine(Countdown());
     }
 
     // Coroutine to handle the countdown logic
     private IEnumerator Countdown()
-{
-    while (currentTime > 0)
     {
-        if (!isPaused)
-        {   
-            currentTime -= Time.deltaTime;
-
-            int minutes = Mathf.FloorToInt(currentTime / 60); // Get minutes digit
-            int seconds = Mathf.CeilToInt(currentTime % 60); // Get seconds digits
-
-            // Fix for the "0:60" issue
-            if (seconds == 60)
+        while (currentTime > 0)
+        {
+            if (!isPaused)
             {
-                minutes += 1;
-                seconds = 0;
-            }
-            
-            // Ensure two zeros for seconds
-            string formattedTime = minutes + ":" + seconds.ToString("00");
+                currentTime -= Time.deltaTime;
 
-            // Change color when under 10 seconds
-            if (currentTime < 10)
-            {   
-                UIManager.Instance.timerText.color = new Color(0.83f, 0.0f, 0.0f, 1.0f); // Custom red colour
-            }
-            else
-            {
-                UIManager.Instance.timerText.color = Color.white;
-            }
+                int minutes = Mathf.FloorToInt(currentTime / 60); // Get minutes digit
+                int seconds = Mathf.CeilToInt(currentTime % 60); // Get seconds digits
 
-            UIManager.Instance.timerText.text = formattedTime;
+                // Fix for the "0:60" issue
+                if (seconds == 60)
+                {
+                    minutes += 1;
+                    seconds = 0;
+                }
+
+                // Ensure two zeros for seconds
+                string formattedTime = minutes + ":" + seconds.ToString("00");
+
+                // Change color when under 10 seconds
+                if (currentTime < 10)
+                {
+                    UIManager.Instance.timerText.color = new Color(0.83f, 0.0f, 0.0f, 1.0f); // Custom red colour
+                }
+                else
+                {
+                    UIManager.Instance.timerText.color = Color.white;
+                }
+
+                UIManager.Instance.timerText.text = formattedTime;
+            }
+            yield return null;
         }
-        yield return null;
-    }
 
-    UIManager.Instance.timerText.text = "0:00"; // Ensure it displays 0:00 when finished
-    OnTimerEnd();
-}
+        UIManager.Instance.timerText.text = "0:00"; // Ensure it displays 0:00 when finished
+        OnTimerEnd();
+    }
 
     // Called when the timer reaches 0 and the turn ends
     private void OnTimerEnd()
     {
         Debug.Log("Turn time ended. Executing end-of-turn logic.");
-       
+
         //SwitchTurn();
     }
 

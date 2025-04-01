@@ -1,14 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor.SearchService;
 
 public class VictoryManager : MonoBehaviour
 {
 
     public static VictoryManager Instance; // Singleton instance of the VictoryManager
     public TMP_Text winnerText; // Assign in inspector
-    public Image winnerImage; 
+    public Image winnerImage;
     public GameObject victoryCanvas; // Reference to the victory canvas
 
     private void Awake()
@@ -38,7 +37,8 @@ public class VictoryManager : MonoBehaviour
     }
 
 
-    public void DisplayWinner(int playerNumber) {
+    public void DisplayWinner(int playerNumber)
+    {
 
         if (playerNumber == 1)
         {
@@ -50,17 +50,17 @@ public class VictoryManager : MonoBehaviour
             winnerText.text = "Player 2 Wins!";
             if (PlayerManager.player2.spriteName != null) winnerImage.sprite = PlayerSpriteManager.GetPlayerSprite(PlayerManager.player1.spriteName);
         }
-    
-        //GameManager.instance.ChangeGameState(GameManager.GameState.Victory); // Change the game state to Victory
+
+        GameManager.instance.ChangeGameState(GameManager.GameState.Victory); // Change the game state to Victory
         victoryCanvas.SetActive(true); // Show the victory screen
         SceneTransition sceneTransition = FindAnyObjectByType<SceneTransition>(); // Find the SceneTransition component
         StartCoroutine(sceneTransition.FadeInScreen()); // Fade in the screen
     }
 
     public void LoadMainMenu()
-    {   
+    {
         SceneTransition sceneTransition = FindAnyObjectByType<SceneTransition>(); // Find the SceneTransition component
-        sceneTransition.ChangeScene("MainMenuScene"); // Change the scene to Main Menu Scene
+        sceneTransition.ChangeScene("MainMenuScene", false, false); // Change the scene to Main Menu Scene with no additive load
         GameManager.instance.ChangeGameState(GameManager.GameState.MainMenu); // Change the game state to Main Menu
     }
 }

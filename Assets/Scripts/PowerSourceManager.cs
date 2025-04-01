@@ -28,7 +28,7 @@ public class PowerSourceManager : MonoBehaviour
                 powerSourceDict.Add(ps.powerSourceName, ps);
             }
         }
-
+        DontDestroyOnLoad(gameObject); // Prevent this object from being destroyed when loading a new scene
     }
 
     public static Sprite GetPowerSourceSprite(string spriteName)

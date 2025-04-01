@@ -588,7 +588,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bfa56841043181142a9e839e74f54d92, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2032,7 +2032,7 @@ GameObject:
   - component: {fileID: 244786132}
   - component: {fileID: 244786131}
   m_Layer: 5
-  m_Name: Bottom Right Player Text
+  m_Name: Player2Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5925,7 +5925,7 @@ Animator:
   m_GameObject: {fileID: 996856499}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 192b33c135f73b04f827edce49ad2c5d, type: 2}
+  m_Controller: {fileID: 9100000, guid: fa1eb89dff8c41c4cba7adb953b99723, type: 2}
   m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6961,6 +6961,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc3a36d0416bff49bf91d1a211ff5e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1AttackText: {fileID: 1896408864}
+  player1DefenceText: {fileID: 1824768820}
+  player1HealthText: {fileID: 1864528668}
+  player1HUDSprite: {fileID: 1796837126}
+  player1ActivePowerSourceSprite: {fileID: 111237696}
+  player2AttackText: {fileID: 726681068}
+  player2DefenceText: {fileID: 77995647}
+  player2HealthText: {fileID: 680008555}
+  player2HUDSprite: {fileID: 1957929100}
+  player2ActivePowerSourceSprite: {fileID: 1517918959}
 --- !u!4 &1193103083
 Transform:
   m_ObjectHideFlags: 0
@@ -6988,7 +6998,7 @@ GameObject:
   - component: {fileID: 1217362342}
   - component: {fileID: 1217362341}
   m_Layer: 5
-  m_Name: Bottom Right Player Text
+  m_Name: Player1Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8285,7 +8295,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9c7678e9e9fd0b54281a159fdd75c4a2, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8800,7 +8810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1643550563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10677,7 +10687,7 @@ GameObject:
   - component: {fileID: 1907750412}
   - component: {fileID: 1907750411}
   m_Layer: 5
-  m_Name: Rainforest (37)
+  m_Name: Player2HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11381,7 +11391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2008156605
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,24 +1,21 @@
-using UnityEngine;
 using Random = System.Random;
 
 public class PowerSourceGenerator
 {
     private static readonly Random random = new(); // Random number generator
 
-    public static string[] GeneratePowerSources(Player player)
+    public static string[] GeneratePowerSources()
     {
-        // Get all available PowerSources
-        int i = 0;
-        while (player.unlockedPowerSources[i] != null)
-        {
-            i++; // Count the number of unlocked PowerSources
-        }
-        // Generate two random indices
-        int firstIndex = random.Next(i);
-        Debug.Log($"First index: {firstIndex}");
-        int secondIndex = random.Next(i);
-        Debug.Log($"Second index: {secondIndex}");
+        string[] powerSources = { "Fire", "Water", "Earth", "Wind" }; // Array of PowerSources
 
-        return new string[] { player.unlockedPowerSources[firstIndex], player.unlockedPowerSources[secondIndex] }; // Return the two PowerSources
+        // Generate two random power sources
+        int firstPowerSourceIndex = random.Next(powerSources.Length); // Random index for the first PowerSource
+        int secondPowerSourceIndex = random.Next(powerSources.Length); // Random index for the second PowerSource
+
+        return new string[] // Return an array of two random PowerSources
+        {
+            powerSources[firstPowerSourceIndex], // First PowerSource
+            powerSources[secondPowerSourceIndex] // Second PowerSource
+        };
     }
 }

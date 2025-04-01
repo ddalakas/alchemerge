@@ -12,7 +12,10 @@ public class PlayerSpriteManager : MonoBehaviour
         // Load Player sprites into dictionary on Awake
         foreach (Sprite sprite in playerSprites)
         {
-            playerSpriteDict.Add(sprite.name, sprite);
+            if (!playerSpriteDict.ContainsKey(sprite.name)) // Check if the sprite is not already in the dictionary
+            {
+                playerSpriteDict.Add(sprite.name, sprite);
+            }
         }
     }
 

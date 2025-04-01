@@ -10,7 +10,7 @@ public class MainMenuController : MonoBehaviour
             {
                 GameManager.instance.ChangeGameState(GameManager.GameState.PlayPhase); // Change the game state to Play Phase
                 SceneTransition sceneTransition = FindAnyObjectByType<SceneTransition>(); // Find the SceneTransition component
-                sceneTransition.ChangeScene("PlayScene"); // Change the scene to Play Scene
+                sceneTransition.ChangeScene("PlayScene", false, false); // Change the scene to Play Scene with no additive load
             }
         }
         clicked = true; // Set clicked to true
