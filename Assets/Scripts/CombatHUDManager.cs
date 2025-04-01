@@ -270,10 +270,11 @@ public class CombatHUDManager : MonoBehaviour
     IEnumerator PlayAndVictoryTransitionWait()
     {
         yield return new WaitForSeconds(15f); // Wait for 14 seconds
+        CheckWinner();
 
         if (playerThatWon != 0) // Check if a player has won
         {
-            Debug.LogError("Player has won, transitioning to victory screen");
+            Debug.LogError("PLAYER WON" + playerThatWon);
             VictoryManager.Instance.DisplayWinner(playerThatWon); // Show the winner
 
             // Unload the Play Scene
