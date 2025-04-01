@@ -2794,6 +2794,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &357288585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 357288586}
+  m_Layer: 0
+  m_Name: water spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &357288586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357288585}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 50, y: -150, z: -4.326821}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 482976990}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &383545215
 GameObject:
   m_ObjectHideFlags: 0
@@ -3164,6 +3195,7 @@ RectTransform:
   - {fileID: 1517918958}
   - {fileID: 8742555}
   - {fileID: 1466512004}
+  - {fileID: 357288586}
   - {fileID: 292855465}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5874,6 +5906,8 @@ GameObject:
   - component: {fileID: 996856504}
   - component: {fileID: 996856505}
   - component: {fileID: 996856506}
+  - component: {fileID: 996856507}
+  - component: {fileID: 996856508}
   m_Layer: 0
   m_Name: Player2 Model
   m_TagString: Untagged
@@ -5891,7 +5925,7 @@ Animator:
   m_GameObject: {fileID: 996856499}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fa1eb89dff8c41c4cba7adb953b99723, type: 2}
+  m_Controller: {fileID: 9100000, guid: 192b33c135f73b04f827edce49ad2c5d, type: 2}
   m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6020,11 +6054,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 996856499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df45f81fb1d2d58469db13a0a9396cb5, type: 3}
+  m_Script: {fileID: 11500000, guid: 92bdae6d12ac0ef479cf23a90a40b651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rockPrefab: {fileID: 0}
-  spawnPoint: {fileID: 0}
+  firePrefab: {fileID: 9174540140912695174, guid: 8c0b920287f68d04ab8f25b71170d3bf, type: 3}
+  spawnPoint: {fileID: 292855465}
+--- !u!114 &996856507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996856499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03cb71c9f608164e9b48d9945e212a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windPrefab: {fileID: 9174540140912695174, guid: df858a08fcd9730429b80dd9c076397c, type: 3}
+  spawnPoint: {fileID: 292855465}
+--- !u!114 &996856508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996856499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e30c613f20e70747bfc525d622d4367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterPrefab: {fileID: 9174540140912695174, guid: 31f6fcec1f731494994462bd9bb3b5a2, type: 3}
+  spawnPoint: {fileID: 357288586}
 --- !u!1 &1018702745
 GameObject:
   m_ObjectHideFlags: 0
@@ -8357,8 +8419,11 @@ GameObject:
   - component: {fileID: 1524413596}
   - component: {fileID: 1524413601}
   - component: {fileID: 1524413600}
+  - component: {fileID: 1524413603}
   - component: {fileID: 1524413598}
   - component: {fileID: 1524413602}
+  - component: {fileID: 1524413604}
+  - component: {fileID: 1524413605}
   m_Layer: 0
   m_Name: Player1 Model
   m_TagString: Untagged
@@ -8496,6 +8561,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35e04624c47d0b47ad8368496c415a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1524413603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524413595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92bdae6d12ac0ef479cf23a90a40b651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePrefab: {fileID: 9174540140912695174, guid: 50d50d67d42593b4f87d3f9270b4fc81, type: 3}
+  spawnPoint: {fileID: 1466512004}
+--- !u!114 &1524413604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524413595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03cb71c9f608164e9b48d9945e212a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windPrefab: {fileID: 9174540140912695174, guid: e8e9d309db5e046428ed6b1ba3f6fa88, type: 3}
+  spawnPoint: {fileID: 1466512004}
+--- !u!114 &1524413605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524413595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e30c613f20e70747bfc525d622d4367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterPrefab: {fileID: 9174540140912695174, guid: 9a3b17578b7da2e4dbe258e76ea391b1, type: 3}
+  spawnPoint: {fileID: 357288586}
 --- !u!1 &1606552250
 GameObject:
   m_ObjectHideFlags: 0

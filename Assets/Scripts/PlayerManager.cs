@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public static Player player1 = new(100, 20, 50) { baseElement = Player.element.Fire };
-    public static Player player2 = new(50, 20, 50) { baseElement = Player.element.Fire };
+    public static Player player2 = new(50, 20, 50) { baseElement = Player.element.Earth };
 
     public static void Player1Attack()
     {
