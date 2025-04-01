@@ -14,7 +14,7 @@ public class PowerSourceDataLoader : MonoBehaviour
             {
                 foreach (PowerSourceData ps in powerSourceData.PowerSources)
                 {
-                   Debug.Log($"Loaded: {ps.powerSourceName}, Attack: {ps.attack}, Defence: {ps.defence}, Health: {ps.health}");
+                   Debug.Log($"Loaded: {ps.powerSourceName}, Attack: {ps.attack}, Defence: {ps.defence}, Health: {ps.health}, Tier:  {ps.tier}");
                 }
                 PowerSourceManager.powerSourceList = powerSourceData; // Assign the PowerSource data to the PowerSourceManager.
             }

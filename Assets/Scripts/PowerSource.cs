@@ -11,6 +11,8 @@ public class PowerSourceData
     public int attack;
     public int defence;
     public int health;
+    public int tier; // Tier of the PowerSource
+
 }
 
 [System.Serializable]

@@ -13,6 +13,8 @@ public class SettingsManager : MonoBehaviour
 
     public Button backToMainMenuButton; // Button to go back to the main menu
 
+    public Button backButton; // Button to go back to the previous menu
+
     public TMP_Text codexStatusText; // Text displayed on top of the button(ON/OFF)
 
     public GameObject settingsCanvas; // Reference to the settings canvas

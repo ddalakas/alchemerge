@@ -15,7 +15,7 @@ public class CombatHUDManager : MonoBehaviour
     public Image player1HUDSprite;
     public Image player1ActivePowerSourceSprite;
 
-    [Header("Player 2 HUD")] // Combat HUD for Player 2
+    //     [Header("Player 2 HUD")] // Combat HUD for Player 2
 
     public TextMeshProUGUI player2AttackText;
     public TextMeshProUGUI player2DefenceText;
@@ -51,13 +51,13 @@ public class CombatHUDManager : MonoBehaviour
         UpdatePlayer1Stats(); // Initialize Player 1 HUD
         UpdatePlayer2Stats(); // Initialize Player 2 HUD
 
-        // Player 1 Attack
-        PlayerManager.Player1Attack(); // Player 1 attacks
-        StartCoroutine(UpdatePlayer2HUDAfterAnimation()); // Update Player 2 HUD after animation
+        //         // Player 1 Attack
+        //         PlayerManager.Player1Attack(); // Player 1 attacks
+        //         StartCoroutine(UpdatePlayer2HUDAfterAnimation()); // Update Player 2 HUD after animation
 
-        // Player 2 Attack
-        PlayerManager.Player2Attack(); // Player 2 attacks
-        StartCoroutine(UpdatePlayer1HUDAfterAnimation()); // update Player 1 HUD after animation
+        //         // Player 2 Attack
+        //         PlayerManager.Player2Attack(); // Player 2 attacks
+        //         StartCoroutine(UpdatePlayer1HUDAfterAnimation()); // update Player 1 HUD after animation
 
         StartCoroutine(PlayAndVictoryTransitionWait()); // Wait before transitioning to play phase screen or victory screen
     }
@@ -87,7 +87,7 @@ public class CombatHUDManager : MonoBehaviour
     public IEnumerator UpdatePlayer2HUDAfterAnimation()
     {
 
-        yield return new WaitForSeconds(7f); // Wait for 7 seconds before updating HUD
+        //         yield return new WaitForSeconds(7f); // Wait for 7 seconds before updating HUD
 
         if (CheckWinner()) // Check for winner after attacks and then transition to victory screen
         {

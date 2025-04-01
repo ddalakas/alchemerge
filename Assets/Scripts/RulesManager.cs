@@ -6,6 +6,7 @@ public class RulesManager : MonoBehaviour
     public TMP_Text rulesText;
     [TextArea(5, 20)]
     public string rulesContent; // Rules content
+    public GameObject rulesCanvas; // Reference to the rules canvas
 
     void Start()
     {
@@ -17,6 +18,6 @@ public class RulesManager : MonoBehaviour
 
     public void ToggleRulesCanvas()
     {
-        gameObject.SetActive(!gameObject.activeSelf); // Toggle the rules canvas
+        rulesCanvas.SetActive(!rulesCanvas.activeSelf); // Toggle the rules canvas
     }
 }

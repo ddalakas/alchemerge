@@ -65,4 +65,5 @@ public class PlayerManager : MonoBehaviour
         player1 = new(0, 0, 50); // Reset Player 1 to default values
         player2 = new(0, 0, 50); // Reset Player 2 to default values
     }
+
 }
