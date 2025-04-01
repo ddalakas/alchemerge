@@ -12,7 +12,6 @@ public class CodexManager : MonoBehaviour
     public Transform codexContentParent;
     public GameObject codexCanvas;
 
-
     void Awake()
     {
         if (Instance == null)   // Singleton pattern
