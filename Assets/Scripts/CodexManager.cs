@@ -17,7 +17,7 @@ public class CodexManager : MonoBehaviour
 
     
     void Awake()
-    {
+    {   
         if (Instance == null)   // Singleton pattern
         {
             Instance = this;
@@ -29,6 +29,9 @@ public class CodexManager : MonoBehaviour
         {
             Destroy(codexCanvas); // Prevent duplicates
         }
+
+        Debug.Log($"CodexCanvas Instance: {Instance} | Current Object: {gameObject}");
+
     }
     void Start()
     {
