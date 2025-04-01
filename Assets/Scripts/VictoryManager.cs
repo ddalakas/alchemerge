@@ -7,7 +7,6 @@ public class VictoryManager : MonoBehaviour
 
     public static VictoryManager Instance; // Singleton instance of the VictoryManager
     public TMP_Text winnerText; // Assign in inspector
-    public Image winnerImage;
     public GameObject victoryCanvas; // Reference to the victory canvas
 
     private void Awake()
@@ -16,7 +15,9 @@ public class VictoryManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this; // Set the instance to this object
-            DontDestroyOnLoad(gameObject); // Don't destroy this object when loading new scenes
+            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(victoryCanvas);
+            DontDestroyOnLoad(winnerText);
         }
         else
         {
@@ -42,16 +43,14 @@ public class VictoryManager : MonoBehaviour
         if (playerNumber == 1)
         {
             winnerText.text = "Player 1 Wins!";
-            if (PlayerManager.player1.spriteName != null) winnerImage.sprite = PlayerSpriteManager.GetPlayerSprite(PlayerManager.player1.spriteName);
         }
         else if (playerNumber == 2)
         {
             winnerText.text = "Player 2 Wins!";
-            if (PlayerManager.player2.spriteName != null) winnerImage.sprite = PlayerSpriteManager.GetPlayerSprite(PlayerManager.player1.spriteName);
         }
 
         GameManager.instance.ChangeGameState(GameManager.GameState.Victory); // Change the game state to Victory
-        victoryCanvas.SetActive(true); // Show the victory screen
+        victoryCanvas.SetActive(true); // Show the victory canvas
         SceneTransition sceneTransition = FindAnyObjectByType<SceneTransition>(); // Find the SceneTransition component
         StartCoroutine(sceneTransition.FadeInScreen()); // Fade in the screen
     }

@@ -95,7 +95,7 @@ public class SceneTransition : MonoBehaviour
                 Destroy(persistentObject); // Destroy the object
             }
         }
-        Debug.Log("Destryoing Settings and Codex Canvas");
+        Destroy(VictoryManager.Instance.victoryCanvas);
         Destroy(SettingsManager.Instance.settingsCanvas);
         Destroy(CodexManager.Instance.codexCanvas);
     }
