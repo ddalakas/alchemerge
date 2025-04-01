@@ -87,7 +87,7 @@ public class CombatHUDManager : MonoBehaviour
     public IEnumerator UpdatePlayer2HUDAfterAnimation()
     {
 
-        //         yield return new WaitForSeconds(7f); // Wait for 7 seconds before updating HUD
+        yield return new WaitForSeconds(7f); // Wait for 7 seconds before updating HUD
 
         if (CheckWinner()) // Check for winner after attacks and then transition to victory screen
         {
